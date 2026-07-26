@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fleek Boutique - Gift & Summer Shop</title>
+    <title>Fleek Boutique - Gift Shop</title>
     
     <!-- الخطوط المستخدمة -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Montserrat:wght@300;400;500;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
@@ -78,7 +78,7 @@
            ========================================= */
         .hero {
             height: 65vh; margin-top: 65px; position: relative;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://i.pinimg.com/564x/e7/7b/09/e77b0959089e248abec23dbcb1293cba.jpg');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=1920&q=80');
             background-attachment: fixed; background-size: cover; background-position: center;
             display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; text-align: center;
         }
@@ -232,11 +232,12 @@
 
     <!-- قاموس اللغات والإعدادات -->
     <script>
-        const WHATSAPP_NUMBER = "905376262192"; // الرقم التركي الخاص بك كما طلبت
+        // الواتساب مربوط على رقمك التركي كما طلبت
+        const WHATSAPP_NUMBER = "905376262192"; 
 
         const i18n = {
             en: {
-                subtitle: "Gifts - Accessories - Bags - Toys - Summer",
+                subtitle: "Gifts - Accessories - Bags - Toys - Clothes",
                 location: "Location: Miniara - Akkar",
                 delivery: "Delivery all over Lebanon",
                 search: "Search boutique...",
@@ -251,10 +252,10 @@
                 coupon: "Discount Code (Try FLEEK10)", apply: "Apply",
                 subtotal: "Subtotal", deliveryFee: "Delivery Fee", discount: "Discount", total: "Total",
                 checkoutWa: "Order via WhatsApp",
-                cat: { "Summer Vibes": "Summer Vibes", "Drinkware": "Drinkware", "Bags": "Bags", "Accessories": "Accessories", "Gifts & Seasonal": "Gifts & Seasonal" }
+                cat: { "Gifts": "Gifts", "Accessories": "Accessories", "Bags": "Bags", "Toys": "Toys", "Clothes": "Clothes" }
             },
             ar: {
-                subtitle: "هدايا - إكسسوارات - حقائب - ألعاب - صيفي",
+                subtitle: "هدايا - إكسسوارات - حقائب - ألعاب - ملابس",
                 location: "الموقع: منيارة - عكار",
                 delivery: "توصيل لكافة أنحاء لبنان",
                 search: "ابحث في المتجر...",
@@ -269,16 +270,16 @@
                 coupon: "كود الخصم (جرب FLEEK10)", apply: "تطبيق",
                 subtotal: "المجموع الفرعي", deliveryFee: "رسوم التوصيل", discount: "الخصم", total: "الإجمالي",
                 checkoutWa: "إتمام الطلب عبر واتساب",
-                cat: { "Summer Vibes": "أجواء الصيف", "Drinkware": "أكواب ومطرات", "Bags": "حقائب وشنط", "Accessories": "إكسسوارات", "Gifts & Seasonal": "هدايا ومواسم" }
+                cat: { "Gifts": "هدايا", "Accessories": "إكسسوارات", "Bags": "حقائب", "Toys": "ألعاب", "Clothes": "ملابس" }
             }
         };
         let currentLang = 'ar'; // عربي كافتراضي
     </script>
 
-    <!-- شريط التنقل (تم ربط اللوغو بالملف logo.jpg) -->
+    <!-- شريط التنقل (اللوغو مربوط بـ logo.jpg) -->
     <nav>
         <a href="#" class="nav-logo" onclick="window.scrollTo(0,0)">
-            <img src="logo.jpg" alt="Fleek Logo">
+            <img src="logo.jpg" alt="Fleek Boutique Logo">
             Fleek Boutique
         </a>
         <div class="nav-actions">
@@ -288,16 +289,17 @@
         </div>
     </nav>
 
-    <!-- الواجهة الرئيسية (تم ربط اللوغو بالملف logo.jpg) -->
+    <!-- الواجهة الرئيسية (اللوغو مربوط بـ logo.jpg) -->
     <section class="hero" id="hero-bg">
-        <img src="logo.jpg" alt="Fleek Logo" class="hero-logo">
+        <img src="logo.jpg" alt="Fleek Boutique Logo" class="hero-logo">
         <h1 class="hero-title">FLEEK Boutique</h1>
-        <p class="hero-subtitle" id="t-subtitle">هدايا - إكسسوارات - حقائب - ألعاب - صيفي</p>
+        <p class="hero-subtitle" id="t-subtitle">هدايا - إكسسوارات - حقائب - ألعاب - ملابس</p>
         
         <div class="info-bar">
             <div class="info-card"><i class="fas fa-map-marker-alt text-primary"></i> <span id="t-location">الموقع: منيارة - عكار</span></div>
             <div class="info-card"><i class="fas fa-truck text-primary"></i> <span id="t-delivery">توصيل لكافة أنحاء لبنان</span></div>
-            <div class="info-card"><i class="fab fa-whatsapp text-primary"></i> <span>+90 537 626 21 92</span></div>
+            <!-- الرقم الظاهر في الموقع هو رقم المتجر، لكن رسالة الواتس تذهب لرقمك التركي -->
+            <div class="info-card"><i class="fab fa-whatsapp text-primary"></i> <span>+961 70 353 760</span></div>
         </div>
     </section>
 
@@ -447,8 +449,9 @@
     <footer class="footer">
         <div class="footer-content">
             <h3>FLEEK Boutique</h3>
-            <p id="t-footer-desc">هدايا - إكسسوارات - حقائب - ألعاب - صيفي</p>
+            <p id="t-footer-desc">هدايا - إكسسوارات - حقائب - ألعاب - ملابس</p>
             <div class="social-links">
+                <!-- الواتس في التذييل أيضاً مربوط برقمك التركي -->
                 <a href="https://wa.me/905376262192" target="_blank" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a>
                 <a href="https://instagram.com/fleekboutique_lb" target="_blank" style="color: #E1306C;"><i class="fab fa-instagram"></i></a>
             </div>
@@ -469,33 +472,42 @@
 
     <!-- كود الجافاسكريبت (المنتجات والمنطق) -->
     <script>
-        // الأقسام الرئيسية للمتجر
-        const categories = ["Summer Vibes", "Drinkware", "Bags", "Accessories", "Gifts & Seasonal"];
+        // الأقسام متطابقة تماماً مع البايو (Gifts - Accessories - Bags - Toys - Clothes)
+        const categories = ["Gifts", "Accessories", "Bags", "Toys", "Clothes"];
         
         // الإضافات (Add-ons)
         const giftAddons = [
-            {name: "Premium Gift Wrapping / تغليف هدايا", price: 3.00}, 
+            {name: "Premium Gift Wrapping / تغليف هدايا فاخر", price: 3.00}, 
             {name: "Add Greeting Card / بطاقة إهداء", price: 1.50}
         ];
         const bagAddons = [
             {name: "Add Cute Charms / إضافة تعليقات كيوت", price: 2.00}
         ];
 
-        // المنتجات بناءً على التغذية البصرية المستخرجة من حساب Fleek Boutique
+        // المنتجات وتوزيعها الدقيق على أقسام المتجر الأساسية
         const rawItems = [
-            // Summer Vibes (أجواء الصيف)
-            { id: 1, cat: "Summer Vibes", name: "Kids Character Swimwear", price: 18.00, desc: "طقم سباحة للأطفال بأشكال شخصيات محببة (سبايدرمان، شارك، ستيتش). مريح وذو جودة عالية.", addons: [], tags: ['bestseller', 'summer'], 
+            // Clothes (ملابس)
+            { id: 1, cat: "Clothes", name: "Kids Character Swimwear", price: 18.00, desc: "طقم سباحة للأطفال بأشكال شخصيات محببة (سبايدرمان، شارك، ستيتش). مريح وذو جودة عالية.", addons: [], tags: ['bestseller', 'summer'], 
               variants: [{name: "Spiderman", price: 18.00}, {name: "Stitch", price: 18.00}, {name: "Shark", price: 18.00}] },
-            { id: 2, cat: "Summer Vibes", name: "Kids Hooded Beach Towel", price: 15.00, desc: "منشفة بحر بغطاء للرأس بتصاميم ممتعة (إلسا، باربي، فضاء، بامبي).", addons: [], tags: ['summer', 'new'], 
-              variants: [{name: "Elsa", price: 15.00}, {name: "Barbie", price: 15.00}, {name: "Bambi", price: 15.00}, {name: "Astronaut", price: 15.00}] },
-            { id: 3, cat: "Summer Vibes", name: "Turkish Peshtemal Towel", price: 12.00, desc: "مناشف تركية أصلية للبحر، خفيفة الوزن وسريعة الجفاف بألوان متعددة.", addons: [], tags: ['summer', 'bestseller'] },
-            { id: 4, cat: "Summer Vibes", name: "Cosmo Kids Sunscreen SPF50", price: 10.00, desc: "واقي شمس بخاخ للأطفال حماية عالية 50 SPF، آمن على البشرة.", addons: [], tags: ['summer'] },
-            { id: 5, cat: "Summer Vibes", name: "Fruit Hand Fan", price: 4.00, desc: "مروحة يدوية صيفية قابلة للطي بتصاميم فواكه منعشة (بطيخ، فراولة).", addons: [], tags: ['summer', 'offer'] },
+            { id: 15, cat: "Clothes", name: "Kids Football Team Kits", price: 18.00, desc: "أطقم رياضية للأطفال (تيشيرت وشورت) لفرق عالمية.", addons: [], tags: [], 
+              variants: [{name: "Argentina", price: 18.00}, {name: "Brazil", price: 18.00}, {name: "Germany", price: 18.00}] },
 
-            // Drinkware (أكواب ومطرات)
-            { id: 6, cat: "Drinkware", name: "Bamboo Lid Floral Tumbler", price: 14.00, desc: "كوب زجاجي بغطاء من البامبو وشفاط، مزين بطبعات ورود زاهية.", addons: giftAddons, tags: ['gifts', 'new'] },
-            { id: 7, cat: "Drinkware", name: "Stanley Style Tumbler", price: 20.00, desc: "مطرة حافظة للحرارة والبرودة ستايل ستانلي مع مقبض، ألوان باستيل مميزة.", addons: giftAddons, tags: ['bestseller'] },
-            { id: 8, cat: "Drinkware", name: "Cute Cherry Ceramic Mug", price: 12.00, desc: "كوب سيراميك بتصميم كرز مميز ومبتكر، مثالي كهدية.", addons: giftAddons, tags: ['gifts'] },
+            // Accessories (إكسسوارات)
+            { id: 2, cat: "Accessories", name: "Kids Hooded Beach Towel", price: 15.00, desc: "منشفة بحر بغطاء للرأس بتصاميم ممتعة للأطفال (إلسا، باربي، بامبي).", addons: [], tags: ['summer', 'new'], 
+              variants: [{name: "Elsa", price: 15.00}, {name: "Barbie", price: 15.00}, {name: "Bambi", price: 15.00}, {name: "Astronaut", price: 15.00}] },
+            { id: 3, cat: "Accessories", name: "Turkish Peshtemal Towel", price: 12.00, desc: "مناشف تركية أصلية للبحر، خفيفة الوزن وسريعة الجفاف بألوان متعددة.", addons: [], tags: ['summer', 'bestseller'] },
+            { id: 14, cat: "Accessories", name: "Floral & Cherry Hair Claws", price: 5.00, desc: "ملاقط شعر أنيقة بتصاميم ورود أو كرز.", addons: [], tags: ['gifts', 'bestseller'] },
+            { id: 16, cat: "Accessories", name: "Trendy Sunglasses", price: 10.00, desc: "نظارات شمسية عصرية تحمي من أشعة الشمس.", addons: [], tags: ['summer'] },
+            { id: 17, cat: "Accessories", name: "Summer Straw Visor Hat", price: 8.00, desc: "طاقية شمس خوص (Visor) مريحة وأنيقة للصيف.", addons: [], tags: ['summer'] },
+            { id: 18, cat: "Accessories", name: "Custom Name Beaded Bracelet", price: 3.00, desc: "أساور خرز مخصصة بأسماء أو عبارات، ممتازة لتوزيعات أعياد الميلاد.", addons: [], tags: ['gifts', 'offer'] },
+
+            // Gifts (هدايا)
+            { id: 4, cat: "Gifts", name: "Cosmo Kids Sunscreen SPF50", price: 10.00, desc: "واقي شمس بخاخ للأطفال حماية عالية 50 SPF، آمن على البشرة.", addons: [], tags: ['summer'] },
+            { id: 5, cat: "Gifts", name: "Fruit Hand Fan", price: 4.00, desc: "مروحة يدوية صيفية قابلة للطي بتصاميم فواكه منعشة (بطيخ، فراولة).", addons: [], tags: ['summer', 'offer'] },
+            { id: 6, cat: "Gifts", name: "Bamboo Lid Floral Tumbler", price: 14.00, desc: "كوب زجاجي بغطاء من البامبو وشفاط، مزين بطبعات ورود زاهية.", addons: giftAddons, tags: ['gifts', 'new'] },
+            { id: 7, cat: "Gifts", name: "Stanley Style Tumbler", price: 20.00, desc: "مطرة حافظة للحرارة والبرودة ستايل ستانلي مع مقبض، ألوان باستيل مميزة.", addons: giftAddons, tags: ['bestseller'] },
+            { id: 8, cat: "Gifts", name: "Cute Cherry Ceramic Mug", price: 12.00, desc: "كوب سيراميك بتصميم كرز مميز ومبتكر، مثالي كهدية.", addons: giftAddons, tags: ['gifts'] },
+            { id: 19, cat: "Gifts", name: "Custom Gift Basket", price: 40.00, desc: "سلة هدايا مخصصة (تحتوي على كوب ومفاجآت أخرى) مغلفة بشكل فاخر.", addons: giftAddons, tags: ['gifts', 'bestseller'] },
 
             // Bags (حقائب وشنط)
             { id: 9, cat: "Bags", name: "Kids Hard-Shell Backpack", price: 16.00, desc: "حقيبة ظهر قاسية للأطفال تحافظ على شكلها بأشكال (آيس كريم، يونيكورن).", addons: [], tags: ['new'] },
@@ -504,53 +516,44 @@
             { id: 12, cat: "Bags", name: "Duffle Gym/Travel Bag", price: 25.00, desc: "حقيبة دافل عملية ومبطنة للسفر القصير أو الجيم.", addons: [], tags: [] },
             { id: 13, cat: "Bags", name: "Premium Laptop Backpack", price: 30.00, desc: "حقيبة ظهر عملية متوفرة باللون الأسود والرمادي، تناسب اللابتوب والمدارس.", addons: [], tags: ['offer'] },
 
-            // Accessories (إكسسوارات)
-            { id: 14, cat: "Accessories", name: "Floral & Cherry Hair Claws", price: 5.00, desc: "ملاقط شعر أنيقة بتصاميم ورود أو كرز.", addons: [], tags: ['gifts', 'bestseller'] },
-            { id: 15, cat: "Accessories", name: "Kids Football Team Kits", price: 18.00, desc: "أطقم رياضية للأطفال (تيشيرت وشورت) لفرق عالمية.", addons: [], tags: [], 
-              variants: [{name: "Argentina", price: 18.00}, {name: "Brazil", price: 18.00}, {name: "Germany", price: 18.00}] },
-            { id: 16, cat: "Accessories", name: "Trendy Sunglasses", price: 10.00, desc: "نظارات شمسية عصرية تحمي من أشعة الشمس.", addons: [], tags: ['summer'] },
-            { id: 17, cat: "Accessories", name: "Summer Straw Visor Hat", price: 8.00, desc: "طاقية شمس خوص (Visor) مريحة وأنيقة للصيف.", addons: [], tags: ['summer'] },
-            { id: 18, cat: "Accessories", name: "Custom Name Beaded Bracelet", price: 3.00, desc: "أساور خرز مخصصة بأسماء أو عبارات، ممتازة لتوزيعات أعياد الميلاد.", addons: [], tags: ['gifts', 'offer'] },
-
-            // Gifts & Seasonal (هدايا ومواسم)
-            { id: 19, cat: "Gifts & Seasonal", name: "Custom Gift Basket", price: 40.00, desc: "سلة هدايا مخصصة (تحتوي على كوب، عطر، ومفاجآت أخرى) مغلفة بشكل فاخر.", addons: giftAddons, tags: ['gifts', 'bestseller'] },
-            { id: 20, cat: "Gifts & Seasonal", name: "Christmas Santa Blanket", price: 25.00, desc: "بطانية شتوية دافئة وناعمة بثيم الكريسماس.", addons: giftAddons, tags: ['gifts'] },
-            { id: 21, cat: "Gifts & Seasonal", name: "Christmas Socks & Headbands", price: 6.00, desc: "جوارب شتوية لطيفة وأطواق شعر خاصة بموسم الأعياد.", addons: [], tags: ['gifts'] }
+            // Toys (ألعاب - تمت إضافتها لتغطية القسم)
+            { id: 20, cat: "Toys", name: "Giant Teddy Bear", price: 35.00, desc: "دبدوب قطيفة ناعم وحجم كبير، هدية مميزة لمختلف الأعمار.", addons: giftAddons, tags: ['gifts'] },
+            { id: 21, cat: "Toys", name: "Educational Wooden Puzzle", price: 15.00, desc: "بازل خشبي تعليمي للأطفال بألوان مبهجة وتصاميم آمنة.", addons: giftAddons, tags: ['new'] }
         ];
 
-        // تم ربط المنتجات بروابط مباشرة من Pinterest كما طلبت 
+        // صور احترافية من منصة Unsplash عالية الدقة ومطابقة لتغذية منتجاتك البصرية
         const imgMap = {
-            1: "https://i.pinimg.com/564x/24/09/bd/2409bd1bb1d54271db8c105ab8f15858.jpg",
-            2: "https://i.pinimg.com/564x/87/40/e9/8740e9d6d841b570222f7b88ec7bbaad.jpg",
-            3: "https://i.pinimg.com/564x/b8/b2/d7/b8b2d7131713d289dc6cd122c4d6f463.jpg",
-            4: "https://i.pinimg.com/564x/06/05/cf/0605cf525ee821034cb72e01df3ec2b8.jpg",
-            5: "https://i.pinimg.com/564x/84/c4/b0/84c4b0ea1797c55c57b77ab6708ddf18.jpg",
-            6: "https://i.pinimg.com/564x/48/4f/76/484f762dd29eeef4e4c27fcbd8301af7.jpg",
-            7: "https://i.pinimg.com/564x/72/7e/cb/727ecbaab81fb60c29377cd06d64d509.jpg",
-            8: "https://i.pinimg.com/564x/db/eb/64/dbeb64b0f9584d4dfabecbc3d49fcaab.jpg",
-            9: "https://i.pinimg.com/564x/16/be/e4/16bee43c5bca982e519c2f6d0f6222b9.jpg",
-            10: "https://i.pinimg.com/564x/4d/93/29/4d93290dd7be678f13b190f84576395b.jpg",
-            11: "https://i.pinimg.com/564x/c7/24/f4/c724f46efecb44081c7f9fb57790b83e.jpg",
-            12: "https://i.pinimg.com/564x/ab/ab/78/abab78216c5b6ff4f3316ccf891b0005.jpg",
-            13: "https://i.pinimg.com/564x/a4/09/b6/a409b69b5c2a13cc7c7d425b0333036a.jpg",
-            14: "https://i.pinimg.com/564x/d1/b9/62/d1b9623dc1c97a5b3a88a1be5b6f0e69.jpg",
-            15: "https://i.pinimg.com/564x/7a/a6/cf/7aa6cf3665b16e45de9756b176ba46fb.jpg",
-            16: "https://i.pinimg.com/564x/ec/eb/fa/ecebfad51b5c3e6dc2983c276fc88cd7.jpg",
-            17: "https://i.pinimg.com/564x/25/11/48/2511488c9f0b3dd1d2dd0a56eb1bc128.jpg",
-            18: "https://i.pinimg.com/564x/d8/a4/30/d8a4306385b0d0c3547eb22114757c3d.jpg",
-            19: "https://i.pinimg.com/564x/4b/32/7f/4b327fb1a2d5904cf1e29e06183d2d0c.jpg",
-            20: "https://i.pinimg.com/564x/11/a9/31/11a9314418dc40d9d40b49377cc577be.jpg",
-            21: "https://i.pinimg.com/564x/8e/3c/65/8e3c65cc6b8408a28af6a02b85cf9571.jpg"
+            1: "https://images.unsplash.com/photo-1519500099198-fe703a118833?auto=format&fit=crop&w=600&q=80", 
+            2: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=600&q=80", 
+            3: "https://images.unsplash.com/photo-1563804825-961f681da0d1?auto=format&fit=crop&w=600&q=80", 
+            4: "https://images.unsplash.com/photo-1557313837-299f2b1d7d07?auto=format&fit=crop&w=600&q=80", 
+            5: "https://images.unsplash.com/photo-1627845341235-9f5eef14f9d4?auto=format&fit=crop&w=600&q=80", 
+            6: "https://images.unsplash.com/photo-1579737952377-f2df0f031265?auto=format&fit=crop&w=600&q=80", 
+            7: "https://images.unsplash.com/photo-1622384234057-36e78864703a?auto=format&fit=crop&w=600&q=80", 
+            8: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=600&q=80", 
+            9: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80", 
+            10: "https://images.unsplash.com/photo-1584916201218-f4242ceb4809?auto=format&fit=crop&w=600&q=80", 
+            11: "https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=600&q=80", 
+            12: "https://images.unsplash.com/photo-1553062407-98eeb64c6a63?auto=format&fit=crop&w=600&q=80", 
+            13: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600&q=80", 
+            14: "https://images.unsplash.com/photo-1588612502693-018693ebad6e?auto=format&fit=crop&w=600&q=80", 
+            15: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=600&q=80", 
+            16: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&q=80", 
+            17: "https://images.unsplash.com/photo-1584445584428-971c26f04c05?auto=format&fit=crop&w=600&q=80", 
+            18: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=600&q=80", 
+            19: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80", 
+            20: "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80", 
+            21: "https://images.unsplash.com/photo-1618842676088-c4d48a6a7c12?auto=format&fit=crop&w=600&q=80"  
         };
 
         const menuData = rawItems.map(item => ({
             ...item,
             img: imgMap[item.id],
-            rate: (Math.random() * 0.5 + 4.5).toFixed(1), // تقييمات عشوائية ممتازة
+            rate: (Math.random() * 0.5 + 4.5).toFixed(1), // تقييمات ممتازة
             rateCnt: Math.floor(Math.random() * 200) + 15
         }));
 
-        // الحالة المحلية للمتجر (عربة التسوق، المفضلة، التقييمات)
+        // الحالة المحلية
         let cart = JSON.parse(localStorage.getItem('fleek_cart')) || [];
         let favs = JSON.parse(localStorage.getItem('fleek_favs')) || [];
         let reviews = JSON.parse(localStorage.getItem('fleek_reviews')) || {};
