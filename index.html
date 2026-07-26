@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flora & Gifts - Boutique</title>
+    
+    <!-- الخطوط المستخدمة -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Montserrat:wght@300;400;500;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- مكتبة الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           المتغيرات والألوان (هوية متجر الورود والهدايا)
+           ========================================= */
+        :root {
+            --primary: #D47783; /* لون وردي/روز جولد أنيق */
+            --primary-dark: #B55B67;
+            --bg-color: #FAFAFA;
+            --surface: #FFFFFF;
+            --text-main: #2C1E16;
+            --text-muted: #8A7A6B;
+            --border: #F0E8E9;
+            --success: #2E7D32;
+            --danger: #D32F2F;
+            --shadow-sm: 0 4px 15px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+            --font-en: 'Montserrat', sans-serif;
+            --font-ar: 'Cairo', sans-serif;
+            --font-head: 'Playfair Display', serif;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --surface: #1E1E1E;
+            --text-main: #F5F5F5;
+            --text-muted: #B0B0B0;
+            --border: #333333;
+            --shadow-sm: 0 4px 15px rgba(0,0,0,0.3);
+            --shadow-md: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        [dir="rtl"] { font-family: var(--font-ar); }
+        [dir="ltr"] { font-family: var(--font-en); }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+        
+        html { scroll-behavior: smooth; }
+        
+        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; padding-bottom: 100px; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        /* =========================================
+           شريط التنقل العلوي (Navbar)
+           ========================================= */
+        nav {
+            position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95);
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 10px 5%; z-index: 1000; box-shadow: var(--shadow-sm); backdrop-filter: blur(10px);
+        }
+        
+        [data-theme="dark"] nav { background: rgba(30, 30, 30, 0.95); }
+
+        .nav-logo { font-family: var(--font-head); font-size: 24px; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .nav-logo img { width: 45px; height: 45px; object-fit: cover; border-radius: 50%; border: 2px solid var(--primary); background: #fff; padding: 2px; }
+        .nav-actions { display: flex; gap: 15px; align-items: center; }
+        .icon-btn { background: var(--bg-color); border: 1px solid var(--border); font-size: 18px; color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; }
+        .icon-btn:hover { color: var(--primary); border-color: var(--primary); }
+        .lang-toggle { font-weight: 700; font-size: 14px; }
+
+        /* =========================================
+           الواجهة الرئيسية (Hero Section)
+           ========================================= */
+        .hero {
+            height: 65vh; margin-top: 65px; position: relative;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=1920&q=80');
+            background-attachment: fixed; background-size: cover; background-position: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; text-align: center;
+        }
+
+        .hero-logo { width: 110px; height: 110px; object-fit: cover; border-radius: 50%; border: 3px solid var(--primary); background: #fff; padding: 5px; margin-bottom: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
+        .hero-title { font-family: var(--font-head); font-size: 3.5rem; color: var(--primary); margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); letter-spacing: 1px; }
+        .hero-subtitle { font-size: 1.2rem; font-weight: 300; letter-spacing: 2px; margin-bottom: 30px; max-width: 600px; line-height: 1.6; }
+        
+        .info-bar { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-bottom: 25px; }
+        .info-card { background: rgba(255,255,255,0.15); backdrop-filter: blur(5px); padding: 10px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.2); font-size: 14px; display: flex; align-items: center; gap: 8px; }
+
+        /* =========================================
+           شريط العروض المتحرك (Marquee)
+           ========================================= */
+        .offers-banner { background: var(--primary); color: #fff; padding: 10px; text-align: center; font-weight: 600; overflow: hidden; white-space: nowrap; }
+        .offers-marquee { display: inline-block; animation: marquee 20s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+        /* =========================================
+           البحث والفلاتر
+           ========================================= */
+        .controls-section { position: sticky; top: 65px; background: var(--bg-color); z-index: 99; padding: 15px 5%; border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+        .search-bar { display: flex; background: var(--surface); border-radius: 30px; padding: 12px 20px; border: 1px solid var(--border); margin-bottom: 15px; }
+        .search-bar input { border: none; background: transparent; outline: none; flex: 1; color: var(--text-main); font-size: 15px; padding: 0 10px; }
+        .filters { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; }
+        .filter-chip { background: var(--surface); border: 1px solid var(--border); padding: 8px 18px; border-radius: 25px; font-size: 14px; font-weight: 600; cursor: pointer; color: var(--text-muted); white-space: nowrap; }
+        .filter-chip.active, .filter-chip:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+        /* =========================================
+           الأقسام (Categories)
+           ========================================= */
+        .categories-wrapper { padding: 15px 5%; background: var(--surface); display: flex; gap: 20px; overflow-x: auto; border-bottom: 1px solid var(--border); }
+        .cat-btn { background: none; border: none; font-size: 15px; font-weight: 700; color: var(--text-muted); cursor: pointer; white-space: nowrap; padding-bottom: 8px; position: relative; text-transform: uppercase; }
+        .cat-btn.active { color: var(--primary); }
+        .cat-btn.active::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 3px; background: var(--primary); border-radius: 3px 3px 0 0; }
+
+        /* =========================================
+           شبكة المنتجات (Menu Grid)
+           ========================================= */
+        .menu-container { max-width: 1300px; margin: 40px auto; padding: 0 5%; }
+        .category-section { margin-bottom: 60px; scroll-margin-top: 200px; }
+        .cat-title { font-family: var(--font-head); font-size: 28px; margin-bottom: 25px; color: var(--text-main); border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 5px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
+        
+        .card { background: var(--surface); border-radius: 16px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow-sm); position: relative; display: flex; flex-direction: column; cursor: pointer; }
+        .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--primary); }
+        .card-img-wrap { position: relative; height: 260px; overflow: hidden; }
+        .card-img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+        .card:hover .card-img { transform: scale(1.05); }
+
+        .fav-btn { position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.9); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 16px; border: none; cursor: pointer; backdrop-filter: blur(5px); z-index: 2; }
+        .fav-btn.active { color: var(--danger); }
+
+        .badges { position: absolute; top: 15px; left: 15px; display: flex; flex-direction: column; gap: 5px; z-index: 2; }
+        .badge { background: var(--primary); color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 12px; font-weight: 700; text-transform: uppercase; }
+
+        .card-body { padding: 15px; display: flex; flex-direction: column; flex: 1; }
+        .card-meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+        .rating { color: #FFD700; font-weight: 600; display: flex; align-items: center; gap: 4px;}
+        .card-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--text-main); line-height: 1.3;}
+        .card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.4; margin-bottom: 15px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
+        .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 12px; }
+        .card-price { font-size: 18px; font-weight: 700; color: var(--primary); }
+        
+        .add-btn { background: var(--bg-color); border: 1px solid var(--primary); color: var(--primary); width: 35px; height: 35px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; }
+        .card:hover .add-btn { background: var(--primary); color: #fff; }
+
+        /* =========================================
+           النافذة المنبثقة للمنتج (Modal)
+           ========================================= */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; display: none; justify-content: center; align-items: flex-end; backdrop-filter: blur(5px); }
+        .modal-content { background: var(--surface); width: 100%; max-width: 600px; height: 90vh; border-radius: 25px 25px 0 0; display: flex; flex-direction: column; position: relative; animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        .close-modal { position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.9); color: var(--text-main); border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 16px; cursor: pointer; z-index: 10;}
+        .modal-scroll { overflow-y: auto; flex: 1; padding: 0 0 20px 0; }
+        .modal-img { width: 100%; height: 320px; object-fit: cover; object-position: center; border-radius: 25px 25px 0 0;}
+        .modal-info { padding: 20px; }
+        
+        .tabs { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 20px; }
+        .tab { flex: 1; text-align: center; padding: 12px; cursor: pointer; font-weight: 700; font-size: 15px; color: var(--text-muted); }
+        .tab.active { color: var(--primary); border-bottom: 3px solid var(--primary); }
+        
+        .custom-section { margin-bottom: 20px; padding: 0 20px;}
+        .custom-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); display: flex; align-items: center; gap: 8px;}
+        .option-row { display: flex; justify-content: space-between; padding: 12px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; cursor: pointer; }
+        .option-row.active { border-color: var(--primary); background: rgba(212, 119, 131, 0.05); }
+
+        /* التقييمات داخل الـ Modal */
+        #tab-reviews { display: none; padding: 0 20px; }
+        .review-box { border: 1px solid var(--border); border-radius: 12px; padding: 15px; margin-bottom: 12px; background: var(--bg-color); }
+        .review-head { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .review-form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px; }
+        .review-form input, .review-form textarea { padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-color); color: var(--text-main); font-family: inherit;}
+        .star-select { font-size: 24px; color: #ccc; cursor: pointer; text-align: center; margin-bottom: 5px;}
+        .star-select .fas { color: #FFD700; }
+        .btn-submit { background: var(--primary); color: #fff; border: none; padding: 12px; border-radius: 10px; font-weight: 700; font-size: 15px; cursor: pointer; }
+
+        .modal-footer { padding: 15px 20px; background: var(--surface); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -5px 15px rgba(0,0,0,0.05);}
+        .qty-box { display: flex; align-items: center; gap: 15px; background: var(--bg-color); padding: 5px; border-radius: 25px; border: 1px solid var(--border);}
+        .qty-btn { width: 35px; height: 35px; border-radius: 50%; border: none; background: var(--surface); color: var(--text-main); font-size: 16px; cursor: pointer; box-shadow: var(--shadow-sm);}
+        .add-cart-main { background: var(--primary); color: #fff; border: none; padding: 15px 20px; border-radius: 25px; font-size: 16px; font-weight: 700; flex: 1; margin-left: 15px; cursor: pointer; display: flex; justify-content: space-between;}
+
+        /* =========================================
+           السلة الجانبية (Cart Sidebar)
+           ========================================= */
+        .cart-sidebar { position: fixed; top: 0; right: -100%; width: 100%; max-width: 450px; height: 100vh; background: var(--surface); z-index: 2001; box-shadow: -5px 0 30px rgba(0,0,0,0.1); transition: right 0.4s ease, left 0.4s ease; display: flex; flex-direction: column; }
+        .cart-sidebar.open { right: 0; }
+        [dir="rtl"] .cart-sidebar { right: auto; left: -100%; box-shadow: 5px 0 30px rgba(0,0,0,0.1); }
+        [dir="rtl"] .cart-sidebar.open { left: 0; right: auto; }
+        
+        .cart-header { padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-family: var(--font-head); font-size: 22px; }
+        .cart-body { flex: 1; overflow-y: auto; padding: 20px; }
+        .cart-item { display: flex; justify-content: space-between; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed var(--border); }
+        .cart-item-info h4 { margin-bottom: 5px; font-size: 15px; color: var(--text-main);}
+        .cart-item-mods { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+        .cart-price-col { text-align: right; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end;}
+        .remove-btn { color: var(--danger); background: none; border: none; font-size: 12px; cursor: pointer; margin-top: 5px; font-weight: 700;}
+        
+        .checkout-form { margin-top: 20px; background: var(--bg-color); padding: 15px; border-radius: 12px; border: 1px solid var(--border); }
+        .input-group { margin-bottom: 12px; }
+        .input-group label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 5px; color: var(--text-muted); }
+        .input-group input, .input-group textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text-main); font-family: inherit;}
+        
+        .totals { padding: 20px; background: var(--bg-color); border-top: 1px solid var(--border); }
+        .tot-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; color: var(--text-muted); font-weight: 600;}
+        .tot-row.grand { font-size: 20px; font-weight: 700; color: var(--text-main); margin-top: 15px; border-top: 1px solid var(--border); padding-top: 15px; }
+        .btn-whatsapp { width: 100%; background: #25D366; color: #fff; border: none; padding: 15px; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px;}
+
+        /* =========================================
+           التذييل وأزرار الإشعارات العائمة
+           ========================================= */
+        .footer { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 5% 20px; text-align: center; margin-top: 50px;}
+        .footer h3 { font-family: var(--font-head); color: var(--primary); font-size: 24px; margin-bottom: 10px; }
+        .footer p { color: var(--text-muted); font-size: 14px; margin-bottom: 20px; }
+        .social-links { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+        .social-links a { width: 45px; height: 45px; border-radius: 50%; background: var(--bg-color); border: 1px solid var(--border); color: var(--text-main); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 20px; transition: 0.3s; box-shadow: var(--shadow-sm); }
+        .social-links a:hover { background: var(--primary); color: #fff; border-color: var(--primary); transform: translateY(-5px); }
+        .footer-bottom { border-top: 1px solid var(--border); padding-top: 20px; color: var(--text-muted); font-size: 13px; font-weight: 600; }
+
+        .float-cart { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%) translateY(150%); background: var(--primary); color: #fff; padding: 15px 25px; border-radius: 30px; display: flex; align-items: center; gap: 15px; z-index: 900; cursor: pointer; font-weight: 700; font-size: 15px; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 20px rgba(212, 119, 131, 0.4); white-space: nowrap;}
+        .float-cart.visible { transform: translateX(-50%) translateY(0); }
+        .badge-count { background: #fff; color: var(--primary); width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+        
+        #toast { visibility: hidden; min-width: 250px; background-color: var(--success); color: #fff; text-align: center; border-radius: 8px; padding: 15px; position: fixed; z-index: 3000; left: 50%; bottom: 30px; transform: translateX(-50%); font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 90px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 90px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+    </style>
+</head>
+<body data-theme="light">
+
+    <!-- قاموس اللغات والتخزين -->
+    <script>
+        const WHATSAPP_NUMBER = "905376262192"; // استبدل الرقم برقم المتجر
+
+        const i18n = {
+            en: {
+                subtitle: "Luxury Bouquets - Chocolates - Custom Gifts",
+                location: "Location: Main Street, City",
+                delivery: "Fast & Fresh Delivery",
+                search: "Search for a gift or flower...",
+                marquee: "🌸 Free Delivery on Graduation Bouquets! Use Code: GRAD26 | 🎁 10% Off all Chocolate Boxes this weekend!",
+                filterAll: "All", filterBest: "Bestseller ✨", filterBirth: "Birthday 🎂", filterGrad: "Graduation 🎓", filterWed: "Wedding 💍", filterOffer: "Offers 🎁",
+                tabDetails: "Gift Details", tabReviews: "Reviews",
+                addReview: "Write a Review", submitReview: "Submit to WhatsApp",
+                size: "Size / Options", addons: "Gift Add-ons", notes: "Gift Card Message & Notes", notesPlc: "Write your message to be printed on the card, or specify delivery date...",
+                addBtn: "Add to Cart", toastMsg: "Gift added to cart successfully!",
+                cartTitle: "Your Shopping Bag", emptyCart: "Your bag is empty.",
+                name: "Sender Name", phone: "Sender Phone", address: "Receiver Full Address",
+                coupon: "Discount Code (Try GRAD26)", apply: "Apply",
+                subtotal: "Subtotal", deliveryFee: "Delivery Fee", discount: "Discount", total: "Total",
+                checkoutWa: "Send Order via WhatsApp",
+                cat: { "Bouquets": "Bouquets", "Flower Boxes": "Flower Boxes", "Plants": "Plants", "Chocolates & Gifts": "Chocolates & Gifts" }
+            },
+            ar: {
+                subtitle: "باقات فاخرة - شوكولاتة - هدايا مخصصة",
+                location: "الموقع: الشارع الرئيسي، المدينة",
+                delivery: "توصيل سريع بورد طازج",
+                search: "ابحث عن هدية أو وردة...",
+                marquee: "🌸 توصيل مجاني لباقات التخرج! استخدم الكود: GRAD26 | 🎁 خصم 10% على بوكسات الشوكولاتة هذا الويكند!",
+                filterAll: "الكل", filterBest: "الأكثر مبيعاً ✨", filterBirth: "أعياد ميلاد 🎂", filterGrad: "تخرج 🎓", filterWed: "زواج 💍", filterOffer: "عروض 🎁",
+                tabDetails: "تفاصيل الهدية", tabReviews: "التقييمات",
+                addReview: "أضف تقييمك", submitReview: "إرسال التقييم للواتساب",
+                size: "حجم الباقة / الخيارات", addons: "إضافات للهدية", notes: "رسالة كرت الإهداء وملاحظات", notesPlc: "اكتب العبارة لطباعتها على الكرت، أو حدد تاريخ التوصيل المطلوب...",
+                addBtn: "إضافة للسلة", toastMsg: "تمت إضافة الهدية للسلة بنجاح!",
+                cartTitle: "سلة الهدايا", emptyCart: "السلة فارغة حالياً.",
+                name: "اسم المُرسل", phone: "رقم هاتف المُرسل", address: "عنوان المُستلم بالتفصيل",
+                coupon: "كود الخصم (جرب GRAD26)", apply: "تطبيق",
+                subtotal: "المجموع الفرعي", deliveryFee: "رسوم التوصيل", discount: "الخصم", total: "الإجمالي",
+                checkoutWa: "إرسال الطلب عبر واتساب",
+                cat: { "Bouquets": "باقات ورد", "Flower Boxes": "بوكسات ورد", "Plants": "نباتات داخلية", "Chocolates & Gifts": "شوكولاتة وهدايا" }
+            }
+        };
+        let currentLang = 'ar'; // عربي كافتراضي
+    </script>
+
+    <!-- شريط التنقل -->
+    <nav>
+        <a href="#" class="nav-logo" onclick="window.scrollTo(0,0)">
+            <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=100" alt="Flora Logo">
+            Flora & Gifts
+        </a>
+        <div class="nav-actions">
+            <button class="icon-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="theme-icon"></i></button>
+            <button class="icon-btn lang-toggle" onclick="toggleLang()" id="lang-btn">EN</button>
+            <button class="icon-btn" onclick="toggleCart()"><i class="fas fa-shopping-bag"></i></button>
+        </div>
+    </nav>
+
+    <!-- الواجهة الرئيسية -->
+    <section class="hero" id="hero-bg">
+        <img src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?w=200" alt="Flora Logo" class="hero-logo">
+        <h1 class="hero-title">Flora & Gifts</h1>
+        <p class="hero-subtitle" id="t-subtitle">باقات فاخرة - شوكولاتة - هدايا مخصصة</p>
+        
+        <div class="info-bar">
+            <div class="info-card"><i class="fas fa-map-marker-alt text-primary"></i> <span id="t-location">الموقع: الشارع الرئيسي، المدينة</span></div>
+            <div class="info-card"><i class="fas fa-truck text-primary"></i> <span id="t-delivery">توصيل سريع بورد طازج</span></div>
+            <div class="info-card"><i class="fab fa-whatsapp text-primary"></i> <span>+961 70 000 000</span></div>
+        </div>
+    </section>
+
+    <!-- شريط العروض المتحرك -->
+    <div class="offers-banner">
+        <div class="offers-marquee" id="t-marquee">🌸 توصيل مجاني لباقات التخرج! استخدم الكود: GRAD26 | 🎁 خصم 10% على بوكسات الشوكولاتة هذا الويكند!</div>
+    </div>
+
+    <!-- أزرار التحكم (البحث والفلاتر) -->
+    <div class="controls-section">
+        <div class="search-bar">
+            <i class="fas fa-search" style="color: var(--text-muted); margin-top: 3px;"></i>
+            <input type="text" id="searchInput" placeholder="ابحث عن هدية أو وردة..." onkeyup="filterMenu()">
+        </div>
+        <div class="filters">
+            <div class="filter-chip active" onclick="applyTag('all', this)" id="t-fAll">الكل</div>
+            <div class="filter-chip" onclick="applyTag('bestseller', this)" id="t-fBest">الأكثر مبيعاً ✨</div>
+            <div class="filter-chip" onclick="applyTag('birthday', this)" id="t-fBirth">أعياد ميلاد 🎂</div>
+            <div class="filter-chip" onclick="applyTag('graduation', this)" id="t-fGrad">تخرج 🎓</div>
+            <div class="filter-chip" onclick="applyTag('wedding', this)" id="t-fWed">زواج 💍</div>
+            <div class="filter-chip" onclick="applyTag('offer', this)" id="t-fOffer">عروض 🎁</div>
+        </div>
+    </div>
+
+    <!-- الأقسام والمنتجات -->
+    <div class="categories-wrapper" id="cat-container"></div>
+    <div class="menu-container" id="menu-container"></div>
+
+    <!-- نافذة تفاصيل الهدية والتقييمات -->
+    <div class="modal" id="item-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <img src="" id="m-img" class="modal-img">
+            
+            <div class="modal-scroll">
+                <div class="modal-info">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <h2 style="font-family: var(--font-head); font-size:24px; color:var(--text-main);" id="m-title">Title</h2>
+                        <div class="rating"><i class="fas fa-star"></i> <span id="m-rate">4.9</span> (<span id="m-rate-cnt">50</span>)</div>
+                    </div>
+                    <p style="font-size:14px; color:var(--text-muted); margin-top:10px; line-height: 1.6;" id="m-desc">Desc</p>
+                </div>
+                
+                <div class="tabs">
+                    <div class="tab active" onclick="switchTab('details')" id="t-tabDetails">تفاصيل الهدية</div>
+                    <div class="tab" onclick="switchTab('reviews')" id="t-tabReviews">التقييمات</div>
+                </div>
+
+                <!-- التبويب الأول: التفاصيل والخيارات -->
+                <div id="tab-details">
+                    <div id="m-variants-sec" class="custom-section" style="display:none;">
+                        <div class="custom-title"><i class="fas fa-list"></i> <span id="t-size">حجم الباقة / الخيارات</span></div>
+                        <div id="m-variants-list"></div>
+                    </div>
+                    <div id="m-addons-sec" class="custom-section" style="display:none;">
+                        <div class="custom-title"><i class="fas fa-gift"></i> <span id="t-addons">إضافات للهدية</span></div>
+                        <div id="m-addons-list"></div>
+                    </div>
+                    <div class="custom-section">
+                        <div class="custom-title"><i class="fas fa-envelope-open-text"></i> <span id="t-notes">رسالة كرت الإهداء وملاحظات</span></div>
+                        <textarea id="m-note" class="input-group" style="width:100%; padding:15px; border-radius:10px; border:1px solid var(--border); background:var(--bg-color); color:var(--text-main); height:100px;" placeholder="اكتب العبارة لطباعتها على الكرت، أو حدد تاريخ التوصيل المطلوب..."></textarea>
+                    </div>
+                </div>
+
+                <!-- التبويب الثاني: التقييمات -->
+                <div id="tab-reviews">
+                    <div class="review-form">
+                        <h3 id="t-addReview" style="color: var(--text-main); margin-bottom:5px;">أضف تقييمك</h3>
+                        <div class="star-select" id="star-selector">
+                            <i class="fas fa-star" data-val="1"></i>
+                            <i class="fas fa-star" data-val="2"></i>
+                            <i class="fas fa-star" data-val="3"></i>
+                            <i class="fas fa-star" data-val="4"></i>
+                            <i class="fas fa-star" data-val="5"></i>
+                        </div>
+                        <input type="text" id="rev-name" placeholder="Name / الاسم">
+                        <textarea id="rev-text" placeholder="Review... / تعليقك..." rows="3"></textarea>
+                        <button class="btn-submit" onclick="submitReviewWA()" id="t-subReview" style="background: #25D366;"><i class="fab fa-whatsapp"></i> إرسال التقييم للواتساب</button>
+                    </div>
+                    <div id="reviews-list"></div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <div class="qty-box">
+                    <button class="qty-btn" onclick="chgQty(-1)"><i class="fas fa-minus"></i></button>
+                    <span id="m-qty" style="font-weight:700; width:25px; text-align:center; font-size:16px;">1</span>
+                    <button class="qty-btn" onclick="chgQty(1)"><i class="fas fa-plus"></i></button>
+                </div>
+                <button class="add-cart-main" onclick="addToCart()">
+                    <span id="t-addBtn">إضافة للسلة</span> <span id="m-total-price">$0.00</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- السلة الجانبية والكوبونات -->
+    <div class="cart-sidebar" id="cart-side">
+        <div class="cart-header">
+            <span id="t-cartTitle">سلة الهدايا</span>
+            <button class="icon-btn" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-body">
+            <div id="cart-items"></div>
+            
+            <div class="checkout-form">
+                <div class="input-group">
+                    <label id="t-name">اسم المُرسل</label>
+                    <input type="text" id="c-name" placeholder="Sender Name">
+                </div>
+                <div class="input-group">
+                    <label id="t-phone">رقم هاتف المُرسل</label>
+                    <input type="text" id="c-phone" placeholder="Phone Number">
+                </div>
+                <div class="input-group">
+                    <label id="t-address">عنوان المُستلم بالتفصيل</label>
+                    <textarea id="c-address" rows="2" placeholder="Receiver Address..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label id="t-coupon">كود الخصم (جرب GRAD26)</label>
+                    <div style="display:flex; gap:10px;">
+                        <input type="text" id="c-coupon" placeholder="Code">
+                        <button onclick="applyCoupon()" id="t-apply" style="background:var(--primary); color:#fff; border:none; padding:0 20px; border-radius:8px; cursor:pointer; font-weight:bold;">تطبيق</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="totals">
+            <div class="tot-row">
+                <span id="t-subtot">المجموع الفرعي</span> <span id="cart-sub">$0.00</span>
+            </div>
+            <div class="tot-row">
+                <span id="t-deliv">رسوم التوصيل</span> <span>$5.00</span>
+            </div>
+            <div class="tot-row" id="disc-row" style="display:none; color:var(--success);">
+                <span id="t-discount">الخصم</span> <span id="cart-disc">-$0.00</span>
+            </div>
+            <div class="tot-row grand">
+                <span id="t-tot">الإجمالي</span> <span id="cart-tot">$0.00</span>
+            </div>
+            <button class="btn-whatsapp" onclick="checkoutWA()">
+                <i class="fab fa-whatsapp" style="font-size:20px;"></i> <span id="t-checkWa">إرسال الطلب عبر واتساب</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- التذييل -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Flora & Gifts</h3>
+            <p id="t-footer-desc">باقات فاخرة - شوكولاتة - هدايا مخصصة</p>
+            <div class="social-links">
+                <a href="https://wa.me/905376262192" target="_blank" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" style="color: #E1306C;"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Flora Boutique. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- أزرار الإشعارات العائمة -->
+    <div class="float-cart" id="float-cart" onclick="toggleCart()">
+        <i class="fas fa-shopping-bag"></i>
+        <div style="flex:1;">Cart</div>
+        <div class="badge-count" id="float-cnt">0</div>
+        <div id="float-tot">$0.00</div>
+    </div>
+    <div id="toast">تمت الإضافة للسلة بنجاح!</div>
+
+    <!-- كود الجافاسكريبت (المصفوفات والمنطق) -->
+    <script>
+        // الأقسام لمتجر الهدايا والورود
+        const categories = ["Bouquets", "Flower Boxes", "Plants", "Chocolates & Gifts"];
+        
+        // إضافات الهدايا الثابتة
+        const giftAddons = [
+            {name: "Premium Gift Wrapping / تغليف فاخر", price: 5.00}, 
+            {name: "Ferrero Rocher Box / بوكس شوكولاتة", price: 12.00},
+            {name: "Helium Balloon / بالون هيليوم", price: 4.00},
+            {name: "Glass Vase / فازة زجاجية", price: 8.00}
+        ];
+
+        // مصفوفة المنتجات المخصصة للورد والهدايا
+        const rawItems = [
+            // Bouquets
+            { id: 1, cat: "Bouquets", name: "Classic Red Roses Bouquet", price: 25.00, desc: "باقة جوري أحمر كلاسيكية، تعبر عن الحب والمشاعر الصادقة.", addons: giftAddons, tags: ['bestseller', 'wedding'], 
+              variants: [{name: "Small (12 Roses)", price: 25.00}, {name: "Medium (24 Roses)", price: 45.00}, {name: "Large (50 Roses)", price: 85.00}] },
+            { id: 2, cat: "Bouquets", name: "Sunflowers Joy", price: 20.00, desc: "باقة دوار الشمس المبهجة، مثالية لحفلات التخرج والنجاح.", addons: giftAddons, tags: ['graduation', 'bestseller'] },
+            { id: 3, cat: "Bouquets", name: "Pastel Elegance Bouquet", price: 35.00, desc: "تشكيلة من الورود بألوان الباستيل الهادئة والمميزة.", addons: giftAddons, tags: ['birthday'], 
+              variants: [{name: "Standard", price: 35.00}, {name: "Deluxe", price: 50.00}] },
+            
+            // Flower Boxes
+            { id: 4, cat: "Flower Boxes", name: "Luxury Black Box - White Roses", price: 40.00, desc: "بوكس أسود فاخر يحتوي على ورود بيضاء طبيعية.", addons: giftAddons, tags: ['wedding', 'offer'] },
+            { id: 5, cat: "Flower Boxes", name: "Heart Shaped Rose Box", price: 55.00, desc: "بوكس على شكل قلب ممتلئ بالورود الحمراء.", addons: giftAddons, tags: ['birthday', 'bestseller'] },
+            { id: 6, cat: "Flower Boxes", name: "Graduation Cap Box", price: 45.00, desc: "بوكس تخرج مع قبعة صغيرة وتنسيق ورد أصفر وأبيض.", addons: giftAddons, tags: ['graduation'] },
+            
+            // Plants
+            { id: 7, cat: "Plants", name: "Orchid Plant in Ceramic", price: 30.00, desc: "نبتة أوركيد طبيعية في حوض سيراميك أنيق.", addons: [{name: "Add Plant Care Guide", price: 0.00}], tags: ['offer'] },
+            { id: 8, cat: "Plants", name: "Bonsai Tree", price: 40.00, desc: "شجرة بونساي مصغرة، هدية مثالية للمكاتب والمنازل.", addons: [], tags: [] },
+            
+            // Chocolates & Gifts
+            { id: 9, cat: "Chocolates & Gifts", name: "Belgian Chocolate Assortment", price: 28.00, desc: "صندوق شوكولاتة بلجيكية فاخرة بحشوات متعددة.", addons: [{name: "Add Single Rose", price: 3.00}], tags: ['birthday', 'bestseller'] },
+            { id: 10, cat: "Chocolates & Gifts", name: "Teddy Bear & Chocolates", price: 35.00, desc: "دبدوب قطيفة ناعم مع صندوق شوكولاتة.", addons: [], tags: ['birthday'] },
+            { id: 11, cat: "Chocolates & Gifts", name: "Customized Perfume Set", price: 60.00, desc: "طقم عطور مع إمكانية حفر الاسم، تغليف هدايا مجاني.", addons: [], tags: ['wedding'] }
+        ];
+
+        // صور احترافية لمتجر الورود من Unsplash
+        const imgMap = {
+            1: "https://images.unsplash.com/photo-1591886762334-a1db4b2dd4b7?w=400", // Red roses
+            2: "https://images.unsplash.com/photo-1596706708796-03714b8a1ec5?w=400", // Sunflowers
+            3: "https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=400", // Pastel
+            4: "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=400", // White Box
+            5: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=400", // Box with gift
+            6: "https://images.unsplash.com/photo-1523626752472-b55a628f1acc?w=400", // Grad / Celebration
+            7: "https://images.unsplash.com/photo-1510250689405-b0622fa3ef8b?w=400", // Orchid
+            8: "https://images.unsplash.com/photo-1599598425947-3300262174c6?w=400", // Bonsai
+            9: "https://images.unsplash.com/photo-1548907040-4baa42d10919?w=400", // Chocolate
+            10: "https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=400", // Teddy
+            11: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400" // Perfume
+        };
+
+        const menuData = rawItems.map(item => ({
+            ...item,
+            img: imgMap[item.id],
+            rate: (Math.random() * 0.5 + 4.5).toFixed(1), // تقييمات عشوائية بين 4.5 و 5
+            rateCnt: Math.floor(Math.random() * 200) + 20
+        }));
+
+        // الحالة المحلية
+        let cart = JSON.parse(localStorage.getItem('flora_cart')) || [];
+        let favs = JSON.parse(localStorage.getItem('flora_favs')) || [];
+        let reviews = JSON.parse(localStorage.getItem('flora_reviews')) || {};
+        
+        let activeTag = 'all';
+        let currentItem = null;
+        let cQty = 1;
+        let cVarPrice = 0;
+        let cVarName = "";
+        let cAddons = [];
+        let discountVal = 0;
+        const DELIVERY_FEE = 5.00;
+
+        window.onload = () => {
+            document.documentElement.dir = 'rtl'; // عربي افتراضي
+            if(localStorage.getItem('theme') === 'dark') toggleTheme(true);
+            if(localStorage.getItem('lang')) {
+                currentLang = localStorage.getItem('lang');
+                if(currentLang === 'en') {
+                    document.documentElement.dir = 'ltr';
+                    document.getElementById('lang-btn').innerText = 'AR';
+                }
+            }
+            renderUI();
+        };
+
+        function renderUI() {
+            renderCategories();
+            filterMenu(); 
+            updateCartUI();
+            updateTexts();
+        }
+
+        function updateTexts() {
+            const dict = i18n[currentLang];
+            document.getElementById('t-subtitle').innerText = dict.subtitle;
+            document.getElementById('t-footer-desc').innerText = dict.subtitle;
+            document.getElementById('t-location').innerText = dict.location;
+            document.getElementById('t-delivery').innerText = dict.delivery;
+            document.getElementById('t-marquee').innerText = dict.marquee;
+            document.getElementById('searchInput').placeholder = dict.search;
+            
+            document.getElementById('t-fAll').innerText = dict.filterAll;
+            document.getElementById('t-fBest').innerText = dict.filterBest;
+            document.getElementById('t-fBirth').innerText = dict.filterBirth;
+            document.getElementById('t-fGrad').innerText = dict.filterGrad;
+            document.getElementById('t-fWed').innerText = dict.filterWed;
+            document.getElementById('t-fOffer').innerText = dict.filterOffer;
+            
+            document.getElementById('t-tabDetails').innerText = dict.tabDetails;
+            document.getElementById('t-tabReviews').innerText = dict.tabReviews;
+            document.getElementById('t-addReview').innerText = dict.addReview;
+            document.getElementById('t-subReview').innerHTML = `<i class="fab fa-whatsapp"></i> ${dict.submitReview}`;
+            
+            document.getElementById('t-size').innerText = dict.size;
+            document.getElementById('t-addons').innerText = dict.addons;
+            document.getElementById('t-notes').innerText = dict.notes;
+            document.getElementById('m-note').placeholder = dict.notesPlc;
+            document.getElementById('t-addBtn').innerText = dict.addBtn;
+            
+            document.getElementById('t-cartTitle').innerText = dict.cartTitle;
+            document.getElementById('t-name').innerText = dict.name;
+            document.getElementById('t-phone').innerText = dict.phone;
+            document.getElementById('t-address').innerText = dict.address;
+            document.getElementById('t-coupon').innerText = dict.coupon;
+            document.getElementById('t-apply').innerText = dict.apply;
+            
+            document.getElementById('t-subtot').innerText = dict.subtotal;
+            document.getElementById('t-deliv').innerText = dict.deliveryFee;
+            document.getElementById('t-discount').innerText = dict.discount;
+            document.getElementById('t-tot').innerText = dict.total;
+            document.getElementById('t-checkWa').innerText = dict.checkoutWa;
+
+            document.querySelectorAll('.cat-title, .cat-btn').forEach(el => {
+                const engCat = el.getAttribute('data-cat');
+                if(engCat) el.innerText = dict.cat[engCat] || engCat;
+            });
+        }
+
+        function toggleTheme(forceDark = false) {
+            const isDark = forceDark || document.body.getAttribute('data-theme') === 'light';
+            document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            document.getElementById('theme-icon').className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        function toggleLang(forceAr = false) {
+            currentLang = forceAr || currentLang === 'en' ? 'ar' : 'en';
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('lang-btn').innerText = currentLang === 'ar' ? 'EN' : 'AR';
+            localStorage.setItem('lang', currentLang);
+            updateTexts();
+        }
+
+        function renderCategories() {
+            const wrap = document.getElementById('cat-container');
+            wrap.innerHTML = categories.map((c, i) => 
+                `<button class="cat-btn ${i===0?'active':''}" data-cat="${c}" onclick="scrollToCat('${c}', this)">${i18n[currentLang].cat[c]}</button>`
+            ).join('');
+        }
+
+        function scrollToCat(cat, btn) {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const target = document.getElementById(`cat-${cat.replace(/\s+/g, '-')}`);
+            if(target) {
+                const y = target.getBoundingClientRect().top + window.scrollY - 150;
+                window.scrollTo({top: y, behavior: 'smooth'});
+            }
+        }
+
+        function applyTag(tag, el) {
+            document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+            el.classList.add('active');
+            activeTag = tag;
+            filterMenu();
+        }
+
+        function filterMenu() {
+            const term = document.getElementById('searchInput').value.toLowerCase();
+            const container = document.getElementById('menu-container');
+            container.innerHTML = '';
+
+            categories.forEach(cat => {
+                let items = menuData.filter(i => i.cat === cat);
+                if (activeTag !== 'all') items = items.filter(i => i.tags && i.tags.includes(activeTag));
+                if (term) items = items.filter(i => i.name.toLowerCase().includes(term) || i.desc.toLowerCase().includes(term));
+                
+                if(items.length > 0) {
+                    let html = `<div class="category-section" id="cat-${cat.replace(/\s+/g, '-')}">
+                                    <h2 class="cat-title" data-cat="${cat}">${i18n[currentLang].cat[cat]}</h2>
+                                    <div class="grid">`;
+                    
+                    items.forEach(item => {
+                        const isFav = favs.includes(item.id);
+                        const priceTxt = item.variants ? `From $${item.variants[0].price.toFixed(2)}` : `$${item.price.toFixed(2)}`;
+                        
+                        html += `
+                        <div class="card" onclick="openItem(${item.id})">
+                            <div class="badges">
+                                ${item.tags.includes('bestseller') ? '<span class="badge" style="background:var(--primary)">Bestseller</span>' : ''}
+                                ${item.tags.includes('offer') ? '<span class="badge" style="background:var(--success)">Offer</span>' : ''}
+                            </div>
+                            <button class="fav-btn ${isFav?'active':''}" onclick="event.stopPropagation(); toggleFav(${item.id}, this)"><i class="fas fa-heart"></i></button>
+                            
+                            <div class="card-img-wrap">
+                                <img src="${item.img}" class="card-img" loading="lazy">
+                            </div>
+                            
+                            <div class="card-body">
+                                <div class="card-meta">
+                                    <span class="rating"><i class="fas fa-star"></i> ${item.rate} (${item.rateCnt})</span>
+                                </div>
+                                <h3 class="card-title">${item.name}</h3>
+                                <p class="card-desc">${item.desc}</p>
+                                <div class="card-footer">
+                                    <span class="card-price">${priceTxt}</span>
+                                    <div class="add-btn"><i class="fas fa-plus"></i></div>
+                                </div>
+                            </div>
+                        </div>`;
+                    });
+                    html += `</div></div>`;
+                    container.innerHTML += html;
+                }
+            });
+        }
+
+        // ================= Modal & Reviews Logic =================
+        function openItem(id) {
+            currentItem = menuData.find(i => i.id === id);
+            cQty = 1; cAddons = []; document.getElementById('m-note').value = "";
+            document.getElementById('m-img').src = currentItem.img;
+            document.getElementById('m-title').innerText = currentItem.name;
+            document.getElementById('m-desc').innerText = currentItem.desc;
+            document.getElementById('m-rate').innerText = currentItem.rate;
+            document.getElementById('m-rate-cnt').innerText = currentItem.rateCnt;
+
+            switchTab('details');
+
+            const vSec = document.getElementById('m-variants-sec');
+            if(currentItem.variants) {
+                vSec.style.display = 'block';
+                cVarPrice = currentItem.variants[0].price; cVarName = currentItem.variants[0].name;
+                document.getElementById('m-variants-list').innerHTML = currentItem.variants.map((v, i) => `
+                    <div class="option-row ${i===0?'active':''}" onclick="selVar(this, ${v.price}, '${v.name}')">
+                        <span style="font-weight:700; color:var(--text-main);">${v.name}</span>
+                        <span style="color:var(--primary); font-weight:700;">$${v.price.toFixed(2)}</span>
+                    </div>`).join('');
+            } else { vSec.style.display = 'none'; cVarPrice = currentItem.price; cVarName = ""; }
+
+            const aSec = document.getElementById('m-addons-sec');
+            if(currentItem.addons && currentItem.addons.length > 0) {
+                aSec.style.display = 'block';
+                document.getElementById('m-addons-list').innerHTML = currentItem.addons.map(a => `
+                    <label class="option-row" style="display:flex; align-items:center;">
+                        <div>
+                            <input type="checkbox" onchange="updAddon(this, '${a.name}', ${a.price})" style="transform: scale(1.3); accent-color: var(--primary);"> 
+                            <span style="margin-left:12px; margin-right:12px; color:var(--text-main); font-weight:600;">${a.name}</span>
+                        </div>
+                        <span style="color:var(--primary); font-weight:700;">+$${a.price.toFixed(2)}</span>
+                    </label>`).join('');
+            } else { aSec.style.display = 'none'; }
+
+            loadReviews();
+            updModPrice();
+            document.getElementById('item-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() { document.getElementById('item-modal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        
+        function switchTab(t) {
+            document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+            if(t === 'details') {
+                document.getElementById('t-tabDetails').classList.add('active');
+                document.getElementById('tab-details').style.display = 'block';
+                document.getElementById('tab-reviews').style.display = 'none';
+            } else {
+                document.getElementById('t-tabReviews').classList.add('active');
+                document.getElementById('tab-details').style.display = 'none';
+                document.getElementById('tab-reviews').style.display = 'block';
+            }
+        }
+
+        function selVar(el, price, name) {
+            document.querySelectorAll('#m-variants-list .option-row').forEach(e => e.classList.remove('active'));
+            el.classList.add('active'); cVarPrice = price; cVarName = name; updModPrice();
+        }
+
+        function updAddon(cb, name, price) {
+            if(cb.checked) cAddons.push({name: name, price: price});
+            else cAddons = cAddons.filter(a => a.name !== name);
+            updModPrice();
+        }
+
+        function chgQty(val) { if(cQty + val > 0) { cQty += val; updModPrice(); } }
+        
+        function updModPrice() {
+            document.getElementById('m-qty').innerText = cQty;
+            const addTot = cAddons.reduce((sum, a) => sum + a.price, 0);
+            document.getElementById('m-total-price').innerText = `$${((cVarPrice + addTot) * cQty).toFixed(2)}`;
+        }
+
+        function toggleFav(id, btn) {
+            const idx = favs.indexOf(id);
+            if(idx > -1) { favs.splice(idx, 1); btn.classList.remove('active'); } 
+            else { favs.push(id); btn.classList.add('active'); }
+            localStorage.setItem('flora_favs', JSON.stringify(favs));
+        }
+
+        // ================= Review System =================
+        let selStar = 5;
+        document.querySelectorAll('.star-select i').forEach(star => {
+            star.onclick = function() {
+                selStar = parseInt(this.getAttribute('data-val'));
+                document.querySelectorAll('.star-select i').forEach(s => {
+                    s.className = parseInt(s.getAttribute('data-val')) <= selStar ? 'fas fa-star' : 'far fa-star';
+                });
+            }
+        });
+
+        function submitReviewWA() {
+            const name = document.getElementById('rev-name').value.trim() || "Guest";
+            const text = document.getElementById('rev-text').value.trim();
+            if(!text) return alert(currentLang === 'ar' ? "يرجى كتابة تعليق." : "Please write a comment.");
+            
+            if(!reviews[currentItem.id]) reviews[currentItem.id] = [];
+            reviews[currentItem.id].unshift({ name: name, text: text, star: selStar, date: new Date().toLocaleDateString() });
+            localStorage.setItem('flora_reviews', JSON.stringify(reviews));
+            document.getElementById('rev-text').value = '';
+            loadReviews(); 
+
+            let msg = `*Review & Feedback* 🌟\n*Product:* ${currentItem.name}\n*Name:* ${name}\n*Rating:* ${selStar} Stars\n*Comment:* ${text}`;
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function loadReviews() {
+            const list = document.getElementById('reviews-list');
+            const revs = reviews[currentItem.id] || [];
+            if(revs.length === 0) {
+                list.innerHTML = `<p style="color:var(--text-muted); text-align:center; padding:20px;">No reviews yet.</p>`;
+            } else {
+                list.innerHTML = revs.map(r => `
+                    <div class="review-box">
+                        <div class="review-head"><strong style="color:var(--text-main); font-size:15px;">${r.name}</strong> <span style="font-size:12px; color:var(--text-muted);">${r.date}</span></div>
+                        <div class="rating" style="font-size:12px; margin-bottom:5px;">${'<i class="fas fa-star"></i>'.repeat(r.star)}</div>
+                        <p style="font-size:14px; color:var(--text-main); line-height:1.5;">${r.text}</p>
+                    </div>`).join('');
+            }
+        }
+
+        // ================= Cart & Checkout =================
+        function showToast() {
+            const toast = document.getElementById("toast");
+            toast.innerText = i18n[currentLang].toastMsg;
+            toast.className = "show";
+            setTimeout(() => toast.className = toast.className.replace("show", ""), 3000);
+        }
+
+        function addToCart() {
+            const unitPrice = cVarPrice + cAddons.reduce((sum, a) => sum + a.price, 0);
+            cart.push({
+                id: Date.now(), pid: currentItem.id,
+                name: cVarName ? `${currentItem.name} (${cVarName})` : currentItem.name,
+                qty: cQty, unit: unitPrice, tot: unitPrice * cQty,
+                mods: cAddons.map(a => "+ " + a.name).join(', '),
+                note: document.getElementById('m-note').value.trim()
+            });
+            saveCart(); closeModal(); showToast(); 
+        }
+
+        function saveCart() { localStorage.setItem('flora_cart', JSON.stringify(cart)); updateCartUI(); }
+        function remCart(id) { cart = cart.filter(c => c.id !== id); applyCoupon(true); saveCart(); }
+        function toggleCart() { document.getElementById('cart-side').classList.toggle('open'); }
+
+        function applyCoupon(silent = false) {
+            const code = document.getElementById('c-coupon').value.toUpperCase();
+            if(code === "GRAD26" && cart.length > 0) {
+                const sub = cart.reduce((sum, c) => sum + c.tot, 0);
+                discountVal = sub * 0.15; // 15% discount
+                document.getElementById('disc-row').style.display = 'flex';
+                document.getElementById('cart-disc').innerText = `-$${discountVal.toFixed(2)}`;
+                updateCartUI();
+            } else { 
+                discountVal = 0;
+                document.getElementById('disc-row').style.display = 'none';
+                updateCartUI();
+                if(!silent) alert(currentLang === 'ar' ? "كود غير صالح أو السلة فارغة" : "Invalid code or empty cart"); 
+            }
+        }
+
+        function updateCartUI() {
+            const list = document.getElementById('cart-items');
+            const sub = cart.reduce((sum, c) => sum + c.tot, 0);
+            const cnt = cart.reduce((sum, c) => sum + c.qty, 0);
+            
+            document.getElementById('float-cnt').innerText = cnt;
+            
+            const floatBtn = document.getElementById('float-cart');
+            if(cnt > 0) floatBtn.classList.add('visible'); else floatBtn.classList.remove('visible');
+
+            if(cart.length === 0) { 
+                list.innerHTML = `<p style="color:var(--text-muted); font-size:16px; text-align:center; padding:30px;">${i18n[currentLang].emptyCart}</p>`; 
+                discountVal = 0; document.getElementById('disc-row').style.display = 'none';
+            } else {
+                list.innerHTML = cart.map(c => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h4>${c.qty}x ${c.name}</h4>
+                            ${c.mods ? `<div class="cart-item-mods">${c.mods}</div>` : ''}
+                            ${c.note ? `<div class="cart-item-mods" style="color:var(--danger); font-weight:600;">📝 ${c.note}</div>` : ''}
+                        </div>
+                        <div class="cart-price-col">
+                            <strong style="color:var(--primary); font-size:16px;">$${c.tot.toFixed(2)}</strong>
+                            <button class="remove-btn" onclick="remCart(${c.id})"><i class="fas fa-trash"></i> Remove</button>
+                        </div>
+                    </div>`).join('');
+            }
+            
+            document.getElementById('cart-sub').innerText = `$${sub.toFixed(2)}`;
+            const finalTot = sub > 0 ? (sub + DELIVERY_FEE - discountVal) : 0;
+            document.getElementById('float-tot').innerText = `$${finalTot.toFixed(2)}`;
+            document.getElementById('cart-tot').innerText = `$${finalTot.toFixed(2)}`;
+        }
+
+        function checkoutWA() {
+            if(cart.length === 0) return alert(currentLang === 'ar' ? "السلة فارغة!" : "Cart is empty!");
+            
+            const name = document.getElementById('c-name').value.trim();
+            const phone = document.getElementById('c-phone').value.trim();
+            const addr = document.getElementById('c-address').value.trim();
+            
+            if(!name || !addr || !phone) return alert(currentLang === 'ar' ? "يرجى ملء الاسم، الرقم، والعنوان!" : "Please fill Sender Name, Phone, and Receiver Address!");
+
+            let msg = `*New Order - Flora & Gifts* 🌸\n\n`;
+            msg += `*Sender:* ${name}\n*Phone:* ${phone}\n*Receiver Address:* ${addr}\n\n*Gift Details:*\n`;
+            
+            cart.forEach(c => {
+                msg += `🎁 ${c.qty}x ${c.name} ($${c.unit.toFixed(2)})\n`;
+                if(c.mods) msg += `   ↳ ${c.mods}\n`;
+                if(c.note) msg += `   ↳ 📝 Card/Note: ${c.note}\n`;
+            });
+
+            const sub = cart.reduce((sum, c) => sum + c.tot, 0);
+            msg += `\n----------------\n`;
+            msg += `Subtotal: $${sub.toFixed(2)}\nDelivery Fee: $${DELIVERY_FEE.toFixed(2)}\n`;
+            if(discountVal > 0) msg += `Discount: -$${discountVal.toFixed(2)}\n`;
+            msg += `*Total Due: $${(sub + DELIVERY_FEE - discountVal).toFixed(2)}*\n`;
+            msg += `----------------\nThank you for choosing Flora! ✨`;
+
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
