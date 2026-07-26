@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flora & Gifts - Boutique</title>
+    <title>Fleek Boutique - Gift & Summer Shop</title>
     
     <!-- الخطوط المستخدمة -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Montserrat:wght@300;400;500;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
@@ -13,16 +13,16 @@
 
     <style>
         /* =========================================
-           المتغيرات والألوان (هوية متجر الورود والهدايا)
+           المتغيرات والألوان (هوية Fleek Boutique)
            ========================================= */
         :root {
-            --primary: #D47783; /* لون وردي/روز جولد أنيق */
-            --primary-dark: #B55B67;
+            --primary: #D4AF37; /* ذهبي أنيق */
+            --primary-dark: #B5952F;
             --bg-color: #FAFAFA;
             --surface: #FFFFFF;
-            --text-main: #2C1E16;
-            --text-muted: #8A7A6B;
-            --border: #F0E8E9;
+            --text-main: #1A1A1A;
+            --text-muted: #757575;
+            --border: #EEEEEE;
             --success: #2E7D32;
             --danger: #D32F2F;
             --shadow-sm: 0 4px 15px rgba(0,0,0,0.05);
@@ -67,7 +67,7 @@
         [data-theme="dark"] nav { background: rgba(30, 30, 30, 0.95); }
 
         .nav-logo { font-family: var(--font-head); font-size: 24px; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .nav-logo img { width: 45px; height: 45px; object-fit: cover; border-radius: 50%; border: 2px solid var(--primary); background: #fff; padding: 2px; }
+        .nav-logo img { width: 45px; height: 45px; object-fit: contain; border-radius: 50%; border: 2px solid var(--primary); background: #fff; padding: 2px; }
         .nav-actions { display: flex; gap: 15px; align-items: center; }
         .icon-btn { background: var(--bg-color); border: 1px solid var(--border); font-size: 18px; color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; }
         .icon-btn:hover { color: var(--primary); border-color: var(--primary); }
@@ -78,13 +78,13 @@
            ========================================= */
         .hero {
             height: 65vh; margin-top: 65px; position: relative;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=1920&q=80');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=1920&q=80');
             background-attachment: fixed; background-size: cover; background-position: center;
             display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; text-align: center;
         }
 
-        .hero-logo { width: 110px; height: 110px; object-fit: cover; border-radius: 50%; border: 3px solid var(--primary); background: #fff; padding: 5px; margin-bottom: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
-        .hero-title { font-family: var(--font-head); font-size: 3.5rem; color: var(--primary); margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); letter-spacing: 1px; }
+        .hero-logo { width: 110px; height: 110px; object-fit: contain; border-radius: 50%; border: 3px solid var(--primary); background: #fff; padding: 5px; margin-bottom: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
+        .hero-title { font-family: var(--font-head); font-size: 3.5rem; color: var(--primary); margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); letter-spacing: 2px; }
         .hero-subtitle { font-size: 1.2rem; font-weight: 300; letter-spacing: 2px; margin-bottom: 30px; max-width: 600px; line-height: 1.6; }
         
         .info-bar { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-bottom: 25px; }
@@ -134,11 +134,12 @@
 
         .badges { position: absolute; top: 15px; left: 15px; display: flex; flex-direction: column; gap: 5px; z-index: 2; }
         .badge { background: var(--primary); color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 12px; font-weight: 700; text-transform: uppercase; }
+        .badge.sale { background: #E91E63; }
 
         .card-body { padding: 15px; display: flex; flex-direction: column; flex: 1; }
         .card-meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
         .rating { color: #FFD700; font-weight: 600; display: flex; align-items: center; gap: 4px;}
-        .card-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--text-main); line-height: 1.3;}
+        .card-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text-main); line-height: 1.3;}
         .card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.4; margin-bottom: 15px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
         .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 12px; }
         .card-price { font-size: 18px; font-weight: 700; color: var(--primary); }
@@ -164,9 +165,8 @@
         .custom-section { margin-bottom: 20px; padding: 0 20px;}
         .custom-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); display: flex; align-items: center; gap: 8px;}
         .option-row { display: flex; justify-content: space-between; padding: 12px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; cursor: pointer; }
-        .option-row.active { border-color: var(--primary); background: rgba(212, 119, 131, 0.05); }
+        .option-row.active { border-color: var(--primary); background: rgba(212, 175, 55, 0.05); }
 
-        /* التقييمات داخل الـ Modal */
         #tab-reviews { display: none; padding: 0 20px; }
         .review-box { border: 1px solid var(--border); border-radius: 12px; padding: 15px; margin-bottom: 12px; background: var(--bg-color); }
         .review-head { display: flex; justify-content: space-between; margin-bottom: 5px; }
@@ -182,7 +182,7 @@
         .add-cart-main { background: var(--primary); color: #fff; border: none; padding: 15px 20px; border-radius: 25px; font-size: 16px; font-weight: 700; flex: 1; margin-left: 15px; cursor: pointer; display: flex; justify-content: space-between;}
 
         /* =========================================
-           السلة الجانبية (Cart Sidebar)
+           السلة الجانبية والكوبونات (Cart Sidebar)
            ========================================= */
         .cart-sidebar { position: fixed; top: 0; right: -100%; width: 100%; max-width: 450px; height: 100vh; background: var(--surface); z-index: 2001; box-shadow: -5px 0 30px rgba(0,0,0,0.1); transition: right 0.4s ease, left 0.4s ease; display: flex; flex-direction: column; }
         .cart-sidebar.open { right: 0; }
@@ -218,7 +218,7 @@
         .social-links a:hover { background: var(--primary); color: #fff; border-color: var(--primary); transform: translateY(-5px); }
         .footer-bottom { border-top: 1px solid var(--border); padding-top: 20px; color: var(--text-muted); font-size: 13px; font-weight: 600; }
 
-        .float-cart { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%) translateY(150%); background: var(--primary); color: #fff; padding: 15px 25px; border-radius: 30px; display: flex; align-items: center; gap: 15px; z-index: 900; cursor: pointer; font-weight: 700; font-size: 15px; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 20px rgba(212, 119, 131, 0.4); white-space: nowrap;}
+        .float-cart { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%) translateY(150%); background: var(--primary); color: #fff; padding: 15px 25px; border-radius: 30px; display: flex; align-items: center; gap: 15px; z-index: 900; cursor: pointer; font-weight: 700; font-size: 15px; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4); white-space: nowrap;}
         .float-cart.visible { transform: translateX(-50%) translateY(0); }
         .badge-count { background: #fff; color: var(--primary); width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; }
         
@@ -230,46 +230,46 @@
 </head>
 <body data-theme="light">
 
-    <!-- قاموس اللغات والتخزين -->
+    <!-- قاموس اللغات والإعدادات -->
     <script>
-        const WHATSAPP_NUMBER = "905376262192"; // استبدل الرقم برقم المتجر
+        const WHATSAPP_NUMBER = "905376262192"; // الرقم التركي الخاص بك
 
         const i18n = {
             en: {
-                subtitle: "Luxury Bouquets - Chocolates - Custom Gifts",
-                location: "Location: Main Street, City",
-                delivery: "Fast & Fresh Delivery",
-                search: "Search for a gift or flower...",
-                marquee: "🌸 Free Delivery on Graduation Bouquets! Use Code: GRAD26 | 🎁 10% Off all Chocolate Boxes this weekend!",
-                filterAll: "All", filterBest: "Bestseller ✨", filterBirth: "Birthday 🎂", filterGrad: "Graduation 🎓", filterWed: "Wedding 💍", filterOffer: "Offers 🎁",
-                tabDetails: "Gift Details", tabReviews: "Reviews",
+                subtitle: "Gifts - Accessories - Bags - Toys - Summer",
+                location: "Location: Miniara - Akkar",
+                delivery: "Delivery all over Lebanon",
+                search: "Search boutique...",
+                marquee: "🛍️ 10% Off on School Bags! Use Code: FLEEK10 | 🌸 Summer collection has arrived!",
+                filterAll: "All", filterBest: "Bestseller ✨", filterSummer: "Summer 🏖️", filterGifts: "Gifts 🎁", filterOffer: "Offers 💰",
+                tabDetails: "Details", tabReviews: "Reviews",
                 addReview: "Write a Review", submitReview: "Submit to WhatsApp",
-                size: "Size / Options", addons: "Gift Add-ons", notes: "Gift Card Message & Notes", notesPlc: "Write your message to be printed on the card, or specify delivery date...",
-                addBtn: "Add to Cart", toastMsg: "Gift added to cart successfully!",
+                size: "Options / Sizes", addons: "Gift Add-ons", notes: "Special Notes", notesPlc: "Write a gift card message, or specify color preferences...",
+                addBtn: "Add to Cart", toastMsg: "Item added to cart successfully!",
                 cartTitle: "Your Shopping Bag", emptyCart: "Your bag is empty.",
-                name: "Sender Name", phone: "Sender Phone", address: "Receiver Full Address",
-                coupon: "Discount Code (Try GRAD26)", apply: "Apply",
+                name: "Full Name", phone: "Phone Number", address: "Full Address",
+                coupon: "Discount Code (Try FLEEK10)", apply: "Apply",
                 subtotal: "Subtotal", deliveryFee: "Delivery Fee", discount: "Discount", total: "Total",
-                checkoutWa: "Send Order via WhatsApp",
-                cat: { "Bouquets": "Bouquets", "Flower Boxes": "Flower Boxes", "Plants": "Plants", "Chocolates & Gifts": "Chocolates & Gifts" }
+                checkoutWa: "Order via WhatsApp",
+                cat: { "Summer Vibes": "Summer Vibes", "Drinkware": "Drinkware", "Bags": "Bags", "Accessories": "Accessories", "Gifts & Seasonal": "Gifts & Seasonal" }
             },
             ar: {
-                subtitle: "باقات فاخرة - شوكولاتة - هدايا مخصصة",
-                location: "الموقع: الشارع الرئيسي، المدينة",
-                delivery: "توصيل سريع بورد طازج",
-                search: "ابحث عن هدية أو وردة...",
-                marquee: "🌸 توصيل مجاني لباقات التخرج! استخدم الكود: GRAD26 | 🎁 خصم 10% على بوكسات الشوكولاتة هذا الويكند!",
-                filterAll: "الكل", filterBest: "الأكثر مبيعاً ✨", filterBirth: "أعياد ميلاد 🎂", filterGrad: "تخرج 🎓", filterWed: "زواج 💍", filterOffer: "عروض 🎁",
-                tabDetails: "تفاصيل الهدية", tabReviews: "التقييمات",
+                subtitle: "هدايا - إكسسوارات - حقائب - ألعاب - صيفي",
+                location: "الموقع: منيارة - عكار",
+                delivery: "توصيل لكافة أنحاء لبنان",
+                search: "ابحث في المتجر...",
+                marquee: "🛍️ خصم 10% على الحقائب المدرسية! استخدم الكود: FLEEK10 | 🌸 تشكيلة الصيف وصلت الآن!",
+                filterAll: "الكل", filterBest: "الأكثر مبيعاً ✨", filterSummer: "صيفي 🏖️", filterGifts: "هدايا 🎁", filterOffer: "عروض 💰",
+                tabDetails: "التفاصيل", tabReviews: "التقييمات",
                 addReview: "أضف تقييمك", submitReview: "إرسال التقييم للواتساب",
-                size: "حجم الباقة / الخيارات", addons: "إضافات للهدية", notes: "رسالة كرت الإهداء وملاحظات", notesPlc: "اكتب العبارة لطباعتها على الكرت، أو حدد تاريخ التوصيل المطلوب...",
-                addBtn: "إضافة للسلة", toastMsg: "تمت إضافة الهدية للسلة بنجاح!",
-                cartTitle: "سلة الهدايا", emptyCart: "السلة فارغة حالياً.",
-                name: "اسم المُرسل", phone: "رقم هاتف المُرسل", address: "عنوان المُستلم بالتفصيل",
-                coupon: "كود الخصم (جرب GRAD26)", apply: "تطبيق",
+                size: "الخيارات / المقاسات", addons: "إضافات وتغليف", notes: "ملاحظات خاصة", notesPlc: "اكتب رسالة كرت الإهداء، أو حدد اللون المطلوب...",
+                addBtn: "إضافة للسلة", toastMsg: "تمت إضافة المنتج للسلة بنجاح!",
+                cartTitle: "حقيبة التسوق", emptyCart: "الحقيبة فارغة حالياً.",
+                name: "الاسم الكامل", phone: "رقم الهاتف", address: "العنوان بالتفصيل",
+                coupon: "كود الخصم (جرب FLEEK10)", apply: "تطبيق",
                 subtotal: "المجموع الفرعي", deliveryFee: "رسوم التوصيل", discount: "الخصم", total: "الإجمالي",
-                checkoutWa: "إرسال الطلب عبر واتساب",
-                cat: { "Bouquets": "باقات ورد", "Flower Boxes": "بوكسات ورد", "Plants": "نباتات داخلية", "Chocolates & Gifts": "شوكولاتة وهدايا" }
+                checkoutWa: "إتمام الطلب عبر واتساب",
+                cat: { "Summer Vibes": "أجواء الصيف", "Drinkware": "أكواب ومطرات", "Bags": "حقائب وشنط", "Accessories": "إكسسوارات", "Gifts & Seasonal": "هدايا ومواسم" }
             }
         };
         let currentLang = 'ar'; // عربي كافتراضي
@@ -278,8 +278,8 @@
     <!-- شريط التنقل -->
     <nav>
         <a href="#" class="nav-logo" onclick="window.scrollTo(0,0)">
-            <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=100" alt="Flora Logo">
-            Flora & Gifts
+            <img src="https://via.placeholder.com/100/D4AF37/FFFFFF?text=F" alt="Fleek Logo">
+            Fleek Boutique
         </a>
         <div class="nav-actions">
             <button class="icon-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="theme-icon"></i></button>
@@ -290,35 +290,34 @@
 
     <!-- الواجهة الرئيسية -->
     <section class="hero" id="hero-bg">
-        <img src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?w=200" alt="Flora Logo" class="hero-logo">
-        <h1 class="hero-title">Flora & Gifts</h1>
-        <p class="hero-subtitle" id="t-subtitle">باقات فاخرة - شوكولاتة - هدايا مخصصة</p>
+        <img src="https://via.placeholder.com/150/D4AF37/FFFFFF?text=Fleek" alt="Fleek Logo" class="hero-logo">
+        <h1 class="hero-title">FLEEK Boutique</h1>
+        <p class="hero-subtitle" id="t-subtitle">هدايا - إكسسوارات - حقائب - ألعاب - صيفي</p>
         
         <div class="info-bar">
-            <div class="info-card"><i class="fas fa-map-marker-alt text-primary"></i> <span id="t-location">الموقع: الشارع الرئيسي، المدينة</span></div>
-            <div class="info-card"><i class="fas fa-truck text-primary"></i> <span id="t-delivery">توصيل سريع بورد طازج</span></div>
-            <div class="info-card"><i class="fab fa-whatsapp text-primary"></i> <span>+961 70 000 000</span></div>
+            <div class="info-card"><i class="fas fa-map-marker-alt text-primary"></i> <span id="t-location">الموقع: منيارة - عكار</span></div>
+            <div class="info-card"><i class="fas fa-truck text-primary"></i> <span id="t-delivery">توصيل لكافة أنحاء لبنان</span></div>
+            <div class="info-card"><i class="fab fa-whatsapp text-primary"></i> <span>+90 537 626 21 92</span></div>
         </div>
     </section>
 
     <!-- شريط العروض المتحرك -->
     <div class="offers-banner">
-        <div class="offers-marquee" id="t-marquee">🌸 توصيل مجاني لباقات التخرج! استخدم الكود: GRAD26 | 🎁 خصم 10% على بوكسات الشوكولاتة هذا الويكند!</div>
+        <div class="offers-marquee" id="t-marquee">🛍️ خصم 10% على الحقائب المدرسية! استخدم الكود: FLEEK10 | 🌸 تشكيلة الصيف وصلت الآن!</div>
     </div>
 
-    <!-- أزرار التحكم (البحث والفلاتر) -->
+    <!-- البحث والفلاتر -->
     <div class="controls-section">
         <div class="search-bar">
             <i class="fas fa-search" style="color: var(--text-muted); margin-top: 3px;"></i>
-            <input type="text" id="searchInput" placeholder="ابحث عن هدية أو وردة..." onkeyup="filterMenu()">
+            <input type="text" id="searchInput" placeholder="ابحث في المتجر..." onkeyup="filterMenu()">
         </div>
         <div class="filters">
             <div class="filter-chip active" onclick="applyTag('all', this)" id="t-fAll">الكل</div>
             <div class="filter-chip" onclick="applyTag('bestseller', this)" id="t-fBest">الأكثر مبيعاً ✨</div>
-            <div class="filter-chip" onclick="applyTag('birthday', this)" id="t-fBirth">أعياد ميلاد 🎂</div>
-            <div class="filter-chip" onclick="applyTag('graduation', this)" id="t-fGrad">تخرج 🎓</div>
-            <div class="filter-chip" onclick="applyTag('wedding', this)" id="t-fWed">زواج 💍</div>
-            <div class="filter-chip" onclick="applyTag('offer', this)" id="t-fOffer">عروض 🎁</div>
+            <div class="filter-chip" onclick="applyTag('summer', this)" id="t-fSummer">صيفي 🏖️</div>
+            <div class="filter-chip" onclick="applyTag('gifts', this)" id="t-fGifts">هدايا 🎁</div>
+            <div class="filter-chip" onclick="applyTag('offer', this)" id="t-fOffer">عروض 💰</div>
         </div>
     </div>
 
@@ -326,7 +325,7 @@
     <div class="categories-wrapper" id="cat-container"></div>
     <div class="menu-container" id="menu-container"></div>
 
-    <!-- نافذة تفاصيل الهدية والتقييمات -->
+    <!-- نافذة المنتج (Modal) -->
     <div class="modal" id="item-modal">
         <div class="modal-content">
             <button class="close-modal" onclick="closeModal()"><i class="fas fa-times"></i></button>
@@ -335,34 +334,34 @@
             <div class="modal-scroll">
                 <div class="modal-info">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <h2 style="font-family: var(--font-head); font-size:24px; color:var(--text-main);" id="m-title">Title</h2>
+                        <h2 style="font-family: var(--font-head); font-size:20px; color:var(--text-main);" id="m-title">Title</h2>
                         <div class="rating"><i class="fas fa-star"></i> <span id="m-rate">4.9</span> (<span id="m-rate-cnt">50</span>)</div>
                     </div>
                     <p style="font-size:14px; color:var(--text-muted); margin-top:10px; line-height: 1.6;" id="m-desc">Desc</p>
                 </div>
                 
                 <div class="tabs">
-                    <div class="tab active" onclick="switchTab('details')" id="t-tabDetails">تفاصيل الهدية</div>
+                    <div class="tab active" onclick="switchTab('details')" id="t-tabDetails">التفاصيل</div>
                     <div class="tab" onclick="switchTab('reviews')" id="t-tabReviews">التقييمات</div>
                 </div>
 
-                <!-- التبويب الأول: التفاصيل والخيارات -->
+                <!-- تفاصيل المنتج والخيارات -->
                 <div id="tab-details">
                     <div id="m-variants-sec" class="custom-section" style="display:none;">
-                        <div class="custom-title"><i class="fas fa-list"></i> <span id="t-size">حجم الباقة / الخيارات</span></div>
+                        <div class="custom-title"><i class="fas fa-list"></i> <span id="t-size">الخيارات / المقاسات</span></div>
                         <div id="m-variants-list"></div>
                     </div>
                     <div id="m-addons-sec" class="custom-section" style="display:none;">
-                        <div class="custom-title"><i class="fas fa-gift"></i> <span id="t-addons">إضافات للهدية</span></div>
+                        <div class="custom-title"><i class="fas fa-gift"></i> <span id="t-addons">إضافات وتغليف</span></div>
                         <div id="m-addons-list"></div>
                     </div>
                     <div class="custom-section">
-                        <div class="custom-title"><i class="fas fa-envelope-open-text"></i> <span id="t-notes">رسالة كرت الإهداء وملاحظات</span></div>
-                        <textarea id="m-note" class="input-group" style="width:100%; padding:15px; border-radius:10px; border:1px solid var(--border); background:var(--bg-color); color:var(--text-main); height:100px;" placeholder="اكتب العبارة لطباعتها على الكرت، أو حدد تاريخ التوصيل المطلوب..."></textarea>
+                        <div class="custom-title"><i class="fas fa-envelope-open-text"></i> <span id="t-notes">ملاحظات خاصة</span></div>
+                        <textarea id="m-note" class="input-group" style="width:100%; padding:15px; border-radius:10px; border:1px solid var(--border); background:var(--bg-color); color:var(--text-main); height:100px;" placeholder="اكتب رسالة كرت الإهداء، أو حدد اللون المطلوب..."></textarea>
                     </div>
                 </div>
 
-                <!-- التبويب الثاني: التقييمات -->
+                <!-- التقييمات -->
                 <div id="tab-reviews">
                     <div class="review-form">
                         <h3 id="t-addReview" style="color: var(--text-main); margin-bottom:5px;">أضف تقييمك</h3>
@@ -397,7 +396,7 @@
     <!-- السلة الجانبية والكوبونات -->
     <div class="cart-sidebar" id="cart-side">
         <div class="cart-header">
-            <span id="t-cartTitle">سلة الهدايا</span>
+            <span id="t-cartTitle">حقيبة التسوق</span>
             <button class="icon-btn" onclick="toggleCart()"><i class="fas fa-times"></i></button>
         </div>
         <div class="cart-body">
@@ -405,19 +404,19 @@
             
             <div class="checkout-form">
                 <div class="input-group">
-                    <label id="t-name">اسم المُرسل</label>
-                    <input type="text" id="c-name" placeholder="Sender Name">
+                    <label id="t-name">الاسم الكامل</label>
+                    <input type="text" id="c-name" placeholder="Name">
                 </div>
                 <div class="input-group">
-                    <label id="t-phone">رقم هاتف المُرسل</label>
-                    <input type="text" id="c-phone" placeholder="Phone Number">
+                    <label id="t-phone">رقم الهاتف</label>
+                    <input type="text" id="c-phone" placeholder="Phone">
                 </div>
                 <div class="input-group">
-                    <label id="t-address">عنوان المُستلم بالتفصيل</label>
-                    <textarea id="c-address" rows="2" placeholder="Receiver Address..."></textarea>
+                    <label id="t-address">العنوان بالتفصيل</label>
+                    <textarea id="c-address" rows="2" placeholder="Address..."></textarea>
                 </div>
                 <div class="input-group">
-                    <label id="t-coupon">كود الخصم (جرب GRAD26)</label>
+                    <label id="t-coupon">كود الخصم (جرب FLEEK10)</label>
                     <div style="display:flex; gap:10px;">
                         <input type="text" id="c-coupon" placeholder="Code">
                         <button onclick="applyCoupon()" id="t-apply" style="background:var(--primary); color:#fff; border:none; padding:0 20px; border-radius:8px; cursor:pointer; font-weight:bold;">تطبيق</button>
@@ -430,7 +429,7 @@
                 <span id="t-subtot">المجموع الفرعي</span> <span id="cart-sub">$0.00</span>
             </div>
             <div class="tot-row">
-                <span id="t-deliv">رسوم التوصيل</span> <span>$5.00</span>
+                <span id="t-deliv">رسوم التوصيل</span> <span>(تُحدد في الواتساب)</span>
             </div>
             <div class="tot-row" id="disc-row" style="display:none; color:var(--success);">
                 <span id="t-discount">الخصم</span> <span id="cart-disc">-$0.00</span>
@@ -439,7 +438,7 @@
                 <span id="t-tot">الإجمالي</span> <span id="cart-tot">$0.00</span>
             </div>
             <button class="btn-whatsapp" onclick="checkoutWA()">
-                <i class="fab fa-whatsapp" style="font-size:20px;"></i> <span id="t-checkWa">إرسال الطلب عبر واتساب</span>
+                <i class="fab fa-whatsapp" style="font-size:20px;"></i> <span id="t-checkWa">إتمام الطلب عبر واتساب</span>
             </button>
         </div>
     </div>
@@ -447,15 +446,15 @@
     <!-- التذييل -->
     <footer class="footer">
         <div class="footer-content">
-            <h3>Flora & Gifts</h3>
-            <p id="t-footer-desc">باقات فاخرة - شوكولاتة - هدايا مخصصة</p>
+            <h3>FLEEK Boutique</h3>
+            <p id="t-footer-desc">هدايا - إكسسوارات - حقائب - ألعاب - صيفي</p>
             <div class="social-links">
                 <a href="https://wa.me/905376262192" target="_blank" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" style="color: #E1306C;"><i class="fab fa-instagram"></i></a>
+                <a href="https://instagram.com/fleekboutique_lb" target="_blank" style="color: #E1306C;"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2026 Flora Boutique. All rights reserved.
+            &copy; 2026 Fleek Boutique. All rights reserved.
         </div>
     </footer>
 
@@ -468,69 +467,93 @@
     </div>
     <div id="toast">تمت الإضافة للسلة بنجاح!</div>
 
-    <!-- كود الجافاسكريبت (المصفوفات والمنطق) -->
+    <!-- كود الجافاسكريبت (المنتجات والمنطق) -->
     <script>
-        // الأقسام لمتجر الهدايا والورود
-        const categories = ["Bouquets", "Flower Boxes", "Plants", "Chocolates & Gifts"];
+        // الأقسام الرئيسية للمتجر
+        const categories = ["Summer Vibes", "Drinkware", "Bags", "Accessories", "Gifts & Seasonal"];
         
-        // إضافات الهدايا الثابتة
+        // الإضافات (Add-ons)
         const giftAddons = [
-            {name: "Premium Gift Wrapping / تغليف فاخر", price: 5.00}, 
-            {name: "Ferrero Rocher Box / بوكس شوكولاتة", price: 12.00},
-            {name: "Helium Balloon / بالون هيليوم", price: 4.00},
-            {name: "Glass Vase / فازة زجاجية", price: 8.00}
+            {name: "Premium Gift Wrapping / تغليف هدايا", price: 3.00}, 
+            {name: "Add Greeting Card / بطاقة إهداء", price: 1.50}
+        ];
+        const bagAddons = [
+            {name: "Add Cute Charms / إضافة تعليقات كيوت", price: 2.00}
         ];
 
-        // مصفوفة المنتجات المخصصة للورد والهدايا
+        // المنتجات بناءً على التغذية البصرية المستخرجة من حساب Fleek Boutique
         const rawItems = [
-            // Bouquets
-            { id: 1, cat: "Bouquets", name: "Classic Red Roses Bouquet", price: 25.00, desc: "باقة جوري أحمر كلاسيكية، تعبر عن الحب والمشاعر الصادقة.", addons: giftAddons, tags: ['bestseller', 'wedding'], 
-              variants: [{name: "Small (12 Roses)", price: 25.00}, {name: "Medium (24 Roses)", price: 45.00}, {name: "Large (50 Roses)", price: 85.00}] },
-            { id: 2, cat: "Bouquets", name: "Sunflowers Joy", price: 20.00, desc: "باقة دوار الشمس المبهجة، مثالية لحفلات التخرج والنجاح.", addons: giftAddons, tags: ['graduation', 'bestseller'] },
-            { id: 3, cat: "Bouquets", name: "Pastel Elegance Bouquet", price: 35.00, desc: "تشكيلة من الورود بألوان الباستيل الهادئة والمميزة.", addons: giftAddons, tags: ['birthday'], 
-              variants: [{name: "Standard", price: 35.00}, {name: "Deluxe", price: 50.00}] },
-            
-            // Flower Boxes
-            { id: 4, cat: "Flower Boxes", name: "Luxury Black Box - White Roses", price: 40.00, desc: "بوكس أسود فاخر يحتوي على ورود بيضاء طبيعية.", addons: giftAddons, tags: ['wedding', 'offer'] },
-            { id: 5, cat: "Flower Boxes", name: "Heart Shaped Rose Box", price: 55.00, desc: "بوكس على شكل قلب ممتلئ بالورود الحمراء.", addons: giftAddons, tags: ['birthday', 'bestseller'] },
-            { id: 6, cat: "Flower Boxes", name: "Graduation Cap Box", price: 45.00, desc: "بوكس تخرج مع قبعة صغيرة وتنسيق ورد أصفر وأبيض.", addons: giftAddons, tags: ['graduation'] },
-            
-            // Plants
-            { id: 7, cat: "Plants", name: "Orchid Plant in Ceramic", price: 30.00, desc: "نبتة أوركيد طبيعية في حوض سيراميك أنيق.", addons: [{name: "Add Plant Care Guide", price: 0.00}], tags: ['offer'] },
-            { id: 8, cat: "Plants", name: "Bonsai Tree", price: 40.00, desc: "شجرة بونساي مصغرة، هدية مثالية للمكاتب والمنازل.", addons: [], tags: [] },
-            
-            // Chocolates & Gifts
-            { id: 9, cat: "Chocolates & Gifts", name: "Belgian Chocolate Assortment", price: 28.00, desc: "صندوق شوكولاتة بلجيكية فاخرة بحشوات متعددة.", addons: [{name: "Add Single Rose", price: 3.00}], tags: ['birthday', 'bestseller'] },
-            { id: 10, cat: "Chocolates & Gifts", name: "Teddy Bear & Chocolates", price: 35.00, desc: "دبدوب قطيفة ناعم مع صندوق شوكولاتة.", addons: [], tags: ['birthday'] },
-            { id: 11, cat: "Chocolates & Gifts", name: "Customized Perfume Set", price: 60.00, desc: "طقم عطور مع إمكانية حفر الاسم، تغليف هدايا مجاني.", addons: [], tags: ['wedding'] }
+            // Summer Vibes (أجواء الصيف)
+            { id: 1, cat: "Summer Vibes", name: "Kids Character Swimwear", price: 18.00, desc: "طقم سباحة للأطفال بأشكال شخصيات محببة (سبايدرمان، شارك، ستيتش). مريح وذو جودة عالية.", addons: [], tags: ['bestseller', 'summer'], 
+              variants: [{name: "Spiderman", price: 18.00}, {name: "Stitch", price: 18.00}, {name: "Shark", price: 18.00}] },
+            { id: 2, cat: "Summer Vibes", name: "Kids Hooded Beach Towel", price: 15.00, desc: "منشفة بحر بغطاء للرأس بتصاميم ممتعة (إلسا، باربي، فضاء، بامبي).", addons: [], tags: ['summer', 'new'], 
+              variants: [{name: "Elsa", price: 15.00}, {name: "Barbie", price: 15.00}, {name: "Bambi", price: 15.00}, {name: "Astronaut", price: 15.00}] },
+            { id: 3, cat: "Summer Vibes", name: "Turkish Peshtemal Towel", price: 12.00, desc: "مناشف تركية أصلية للبحر، خفيفة الوزن وسريعة الجفاف بألوان متعددة.", addons: [], tags: ['summer', 'bestseller'] },
+            { id: 4, cat: "Summer Vibes", name: "Cosmo Kids Sunscreen SPF50", price: 10.00, desc: "واقي شمس بخاخ للأطفال حماية عالية 50 SPF، آمن على البشرة.", addons: [], tags: ['summer'] },
+            { id: 5, cat: "Summer Vibes", name: "Fruit Hand Fan", price: 4.00, desc: "مروحة يدوية صيفية قابلة للطي بتصاميم فواكه منعشة (بطيخ، فراولة).", addons: [], tags: ['summer', 'offer'] },
+
+            // Drinkware (أكواب ومطرات)
+            { id: 6, cat: "Drinkware", name: "Bamboo Lid Floral Tumbler", price: 14.00, desc: "كوب زجاجي بغطاء من البامبو وشفاط، مزين بطبعات ورود زاهية.", addons: giftAddons, tags: ['gifts', 'new'] },
+            { id: 7, cat: "Drinkware", name: "Stanley Style Tumbler", price: 20.00, desc: "مطرة حافظة للحرارة والبرودة ستايل ستانلي مع مقبض، ألوان باستيل مميزة.", addons: giftAddons, tags: ['bestseller'] },
+            { id: 8, cat: "Drinkware", name: "Cute Cherry Ceramic Mug", price: 12.00, desc: "كوب سيراميك بتصميم كرز مميز ومبتكر، مثالي كهدية.", addons: giftAddons, tags: ['gifts'] },
+
+            // Bags (حقائب وشنط)
+            { id: 9, cat: "Bags", name: "Kids Hard-Shell Backpack", price: 16.00, desc: "حقيبة ظهر قاسية للأطفال تحافظ على شكلها بأشكال (آيس كريم، يونيكورن).", addons: [], tags: ['new'] },
+            { id: 10, cat: "Bags", name: "Rubber Bogg Beach Bag", price: 28.00, desc: "حقيبة مطاطية واسعة ومقاومة للماء، يمكن تزيينها بالتعليقات (Charms).", addons: bagAddons, tags: ['summer', 'bestseller'] },
+            { id: 11, cat: "Bags", name: "Rattan Round Crossbody Bag", price: 22.00, desc: "حقيبة قش/خوص دائرية أنيقة جداً لمشاوير الصيف.", addons: [], tags: ['summer'] },
+            { id: 12, cat: "Bags", name: "Duffle Gym/Travel Bag", price: 25.00, desc: "حقيبة دافل عملية ومبطنة للسفر القصير أو الجيم.", addons: [], tags: [] },
+            { id: 13, cat: "Bags", name: "Premium Laptop Backpack", price: 30.00, desc: "حقيبة ظهر عملية متوفرة باللون الأسود والرمادي، تناسب اللابتوب والمدارس.", addons: [], tags: ['offer'] },
+
+            // Accessories (إكسسوارات)
+            { id: 14, cat: "Accessories", name: "Floral & Cherry Hair Claws", price: 5.00, desc: "ملاقط شعر أنيقة بتصاميم ورود أو كرز.", addons: [], tags: ['gifts', 'bestseller'] },
+            { id: 15, cat: "Accessories", name: "Kids Football Team Kits", price: 18.00, desc: "أطقم رياضية للأطفال (تيشيرت وشورت) لفرق عالمية.", addons: [], tags: [], 
+              variants: [{name: "Argentina", price: 18.00}, {name: "Brazil", price: 18.00}, {name: "Germany", price: 18.00}] },
+            { id: 16, cat: "Accessories", name: "Trendy Sunglasses", price: 10.00, desc: "نظارات شمسية عصرية تحمي من أشعة الشمس.", addons: [], tags: ['summer'] },
+            { id: 17, cat: "Accessories", name: "Summer Straw Visor Hat", price: 8.00, desc: "طاقية شمس خوص (Visor) مريحة وأنيقة للصيف.", addons: [], tags: ['summer'] },
+            { id: 18, cat: "Accessories", name: "Custom Name Beaded Bracelet", price: 3.00, desc: "أساور خرز مخصصة بأسماء أو عبارات، ممتازة لتوزيعات أعياد الميلاد.", addons: [], tags: ['gifts', 'offer'] },
+
+            // Gifts & Seasonal (هدايا ومواسم)
+            { id: 19, cat: "Gifts & Seasonal", name: "Custom Gift Basket", price: 40.00, desc: "سلة هدايا مخصصة (تحتوي على كوب، عطر، ومفاجآت أخرى) مغلفة بشكل فاخر.", addons: giftAddons, tags: ['gifts', 'bestseller'] },
+            { id: 20, cat: "Gifts & Seasonal", name: "Christmas Santa Blanket", price: 25.00, desc: "بطانية شتوية دافئة وناعمة بثيم الكريسماس.", addons: giftAddons, tags: ['gifts'] },
+            { id: 21, cat: "Gifts & Seasonal", name: "Christmas Socks & Headbands", price: 6.00, desc: "جوارب شتوية لطيفة وأطواق شعر خاصة بموسم الأعياد.", addons: [], tags: ['gifts'] }
         ];
 
-        // صور احترافية لمتجر الورود من Unsplash
+        // ربط المنتجات بصور احترافية من Pinterest/Unsplash تتوافق مع التغذية البصرية
         const imgMap = {
-            1: "https://images.unsplash.com/photo-1591886762334-a1db4b2dd4b7?w=400", // Red roses
-            2: "https://images.unsplash.com/photo-1596706708796-03714b8a1ec5?w=400", // Sunflowers
-            3: "https://images.unsplash.com/photo-1562690868-60bbe7293e94?w=400", // Pastel
-            4: "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=400", // White Box
-            5: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=400", // Box with gift
-            6: "https://images.unsplash.com/photo-1523626752472-b55a628f1acc?w=400", // Grad / Celebration
-            7: "https://images.unsplash.com/photo-1510250689405-b0622fa3ef8b?w=400", // Orchid
-            8: "https://images.unsplash.com/photo-1599598425947-3300262174c6?w=400", // Bonsai
-            9: "https://images.unsplash.com/photo-1548907040-4baa42d10919?w=400", // Chocolate
-            10: "https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=400", // Teddy
-            11: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400" // Perfume
+            1: "https://images.unsplash.com/photo-1519500099198-fe703a118833?w=400", // Kids at beach/swimwear vibe
+            2: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=400", // Child in towel
+            3: "https://images.unsplash.com/photo-1563804825-961f681da0d1?w=400", // Turkish towels stack
+            4: "https://images.unsplash.com/photo-1557313837-299f2b1d7d07?w=400", // Sunscreen bottles
+            5: "https://images.unsplash.com/photo-1627845341235-9f5eef14f9d4?w=400", // Hand fan
+            6: "https://images.unsplash.com/photo-1579737952377-f2df0f031265?w=400", // Bamboo glass cup
+            7: "https://images.unsplash.com/photo-1622384234057-36e78864703a?w=400", // Tumbler
+            8: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=400", // Cute mug
+            9: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400", // Hard backpack/cute bag
+            10: "https://images.unsplash.com/photo-1584916201218-f4242ceb4809?w=400", // Rubber/Beach Tote
+            11: "https://images.unsplash.com/photo-1591561954557-26941169b49e?w=400", // Rattan Bag
+            12: "https://images.unsplash.com/photo-1553062407-98eeb64c6a63?w=400", // Duffle bag
+            13: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400", // Laptop Backpack
+            14: "https://images.unsplash.com/photo-1588612502693-018693ebad6e?w=400", // Hair clips
+            15: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400", // Kids football/sports
+            16: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400", // Sunglasses
+            17: "https://images.unsplash.com/photo-1584445584428-971c26f04c05?w=400", // Straw hat/visor
+            18: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400", // Beaded bracelets
+            19: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=400", // Gift basket
+            20: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=400", // Christmas blanket
+            21: "https://images.unsplash.com/photo-1543422894-388277258d44?w=400"  // Christmas socks
         };
 
         const menuData = rawItems.map(item => ({
             ...item,
             img: imgMap[item.id],
-            rate: (Math.random() * 0.5 + 4.5).toFixed(1), // تقييمات عشوائية بين 4.5 و 5
-            rateCnt: Math.floor(Math.random() * 200) + 20
+            rate: (Math.random() * 0.5 + 4.5).toFixed(1), // تقييمات عشوائية ممتازة
+            rateCnt: Math.floor(Math.random() * 200) + 15
         }));
 
-        // الحالة المحلية
-        let cart = JSON.parse(localStorage.getItem('flora_cart')) || [];
-        let favs = JSON.parse(localStorage.getItem('flora_favs')) || [];
-        let reviews = JSON.parse(localStorage.getItem('flora_reviews')) || {};
+        // الحالة المحلية للمتجر (عربة التسوق، المفضلة، التقييمات)
+        let cart = JSON.parse(localStorage.getItem('fleek_cart')) || [];
+        let favs = JSON.parse(localStorage.getItem('fleek_favs')) || [];
+        let reviews = JSON.parse(localStorage.getItem('fleek_reviews')) || {};
         
         let activeTag = 'all';
         let currentItem = null;
@@ -539,7 +562,6 @@
         let cVarName = "";
         let cAddons = [];
         let discountVal = 0;
-        const DELIVERY_FEE = 5.00;
 
         window.onload = () => {
             document.documentElement.dir = 'rtl'; // عربي افتراضي
@@ -572,9 +594,8 @@
             
             document.getElementById('t-fAll').innerText = dict.filterAll;
             document.getElementById('t-fBest').innerText = dict.filterBest;
-            document.getElementById('t-fBirth').innerText = dict.filterBirth;
-            document.getElementById('t-fGrad').innerText = dict.filterGrad;
-            document.getElementById('t-fWed').innerText = dict.filterWed;
+            document.getElementById('t-fSummer').innerText = dict.filterSummer;
+            document.getElementById('t-fGifts').innerText = dict.filterGifts;
             document.getElementById('t-fOffer').innerText = dict.filterOffer;
             
             document.getElementById('t-tabDetails').innerText = dict.tabDetails;
@@ -669,7 +690,8 @@
                         <div class="card" onclick="openItem(${item.id})">
                             <div class="badges">
                                 ${item.tags.includes('bestseller') ? '<span class="badge" style="background:var(--primary)">Bestseller</span>' : ''}
-                                ${item.tags.includes('offer') ? '<span class="badge" style="background:var(--success)">Offer</span>' : ''}
+                                ${item.tags.includes('offer') ? '<span class="badge sale" style="background:#E91E63">Sale</span>' : ''}
+                                ${item.tags.includes('new') ? '<span class="badge" style="background:#2E7D32">New</span>' : ''}
                             </div>
                             <button class="fav-btn ${isFav?'active':''}" onclick="event.stopPropagation(); toggleFav(${item.id}, this)"><i class="fas fa-heart"></i></button>
                             
@@ -776,7 +798,7 @@
             const idx = favs.indexOf(id);
             if(idx > -1) { favs.splice(idx, 1); btn.classList.remove('active'); } 
             else { favs.push(id); btn.classList.add('active'); }
-            localStorage.setItem('flora_favs', JSON.stringify(favs));
+            localStorage.setItem('fleek_favs', JSON.stringify(favs));
         }
 
         // ================= Review System =================
@@ -797,11 +819,11 @@
             
             if(!reviews[currentItem.id]) reviews[currentItem.id] = [];
             reviews[currentItem.id].unshift({ name: name, text: text, star: selStar, date: new Date().toLocaleDateString() });
-            localStorage.setItem('flora_reviews', JSON.stringify(reviews));
+            localStorage.setItem('fleek_reviews', JSON.stringify(reviews));
             document.getElementById('rev-text').value = '';
             loadReviews(); 
 
-            let msg = `*Review & Feedback* 🌟\n*Product:* ${currentItem.name}\n*Name:* ${name}\n*Rating:* ${selStar} Stars\n*Comment:* ${text}`;
+            let msg = `*Review & Feedback - Fleek Boutique* 🌟\n*Product:* ${currentItem.name}\n*Name:* ${name}\n*Rating:* ${selStar} Stars\n*Comment:* ${text}`;
             window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
@@ -840,15 +862,15 @@
             saveCart(); closeModal(); showToast(); 
         }
 
-        function saveCart() { localStorage.setItem('flora_cart', JSON.stringify(cart)); updateCartUI(); }
+        function saveCart() { localStorage.setItem('fleek_cart', JSON.stringify(cart)); updateCartUI(); }
         function remCart(id) { cart = cart.filter(c => c.id !== id); applyCoupon(true); saveCart(); }
         function toggleCart() { document.getElementById('cart-side').classList.toggle('open'); }
 
         function applyCoupon(silent = false) {
             const code = document.getElementById('c-coupon').value.toUpperCase();
-            if(code === "GRAD26" && cart.length > 0) {
+            if(code === "FLEEK10" && cart.length > 0) {
                 const sub = cart.reduce((sum, c) => sum + c.tot, 0);
-                discountVal = sub * 0.15; // 15% discount
+                discountVal = sub * 0.10; // 10% discount
                 document.getElementById('disc-row').style.display = 'flex';
                 document.getElementById('cart-disc').innerText = `-$${discountVal.toFixed(2)}`;
                 updateCartUI();
@@ -889,7 +911,7 @@
             }
             
             document.getElementById('cart-sub').innerText = `$${sub.toFixed(2)}`;
-            const finalTot = sub > 0 ? (sub + DELIVERY_FEE - discountVal) : 0;
+            const finalTot = sub > 0 ? (sub - discountVal) : 0;
             document.getElementById('float-tot').innerText = `$${finalTot.toFixed(2)}`;
             document.getElementById('cart-tot').innerText = `$${finalTot.toFixed(2)}`;
         }
@@ -901,23 +923,23 @@
             const phone = document.getElementById('c-phone').value.trim();
             const addr = document.getElementById('c-address').value.trim();
             
-            if(!name || !addr || !phone) return alert(currentLang === 'ar' ? "يرجى ملء الاسم، الرقم، والعنوان!" : "Please fill Sender Name, Phone, and Receiver Address!");
+            if(!name || !addr || !phone) return alert(currentLang === 'ar' ? "يرجى ملء الاسم، الرقم، والعنوان!" : "Please fill Name, Phone, and Address!");
 
-            let msg = `*New Order - Flora & Gifts* 🌸\n\n`;
-            msg += `*Sender:* ${name}\n*Phone:* ${phone}\n*Receiver Address:* ${addr}\n\n*Gift Details:*\n`;
+            let msg = `*New Order - FLEEK Boutique* ✨\n\n`;
+            msg += `*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${addr}\n\n*Items:*\n`;
             
             cart.forEach(c => {
-                msg += `🎁 ${c.qty}x ${c.name} ($${c.unit.toFixed(2)})\n`;
+                msg += `🛍️ ${c.qty}x ${c.name} ($${c.unit.toFixed(2)})\n`;
                 if(c.mods) msg += `   ↳ ${c.mods}\n`;
-                if(c.note) msg += `   ↳ 📝 Card/Note: ${c.note}\n`;
+                if(c.note) msg += `   ↳ 📝 Note: ${c.note}\n`;
             });
 
             const sub = cart.reduce((sum, c) => sum + c.tot, 0);
             msg += `\n----------------\n`;
-            msg += `Subtotal: $${sub.toFixed(2)}\nDelivery Fee: $${DELIVERY_FEE.toFixed(2)}\n`;
+            msg += `Subtotal: $${sub.toFixed(2)}\nDelivery Fee: (To be calculated on WhatsApp)\n`;
             if(discountVal > 0) msg += `Discount: -$${discountVal.toFixed(2)}\n`;
-            msg += `*Total Due: $${(sub + DELIVERY_FEE - discountVal).toFixed(2)}*\n`;
-            msg += `----------------\nThank you for choosing Flora! ✨`;
+            msg += `*Total Due: $${(sub - discountVal).toFixed(2)}*\n`;
+            msg += `----------------\nThank you for shopping with us! 🌸`;
 
             const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
             window.open(url, '_blank');
