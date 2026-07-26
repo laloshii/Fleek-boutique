@@ -232,7 +232,7 @@
 
     <!-- قاموس اللغات والإعدادات -->
     <script>
-        // الواتساب مربوط على رقمك التركي كما طلبت
+        // الواتساب مربوط على رقمك التركي 
         const WHATSAPP_NUMBER = "905376262192"; 
 
         const i18n = {
@@ -252,7 +252,7 @@
                 coupon: "Discount Code (Try FLEEK10)", apply: "Apply",
                 subtotal: "Subtotal", deliveryFee: "Delivery Fee", discount: "Discount", total: "Total",
                 checkoutWa: "Order via WhatsApp",
-                cat: { "Gifts": "Gifts", "Accessories": "Accessories", "Bags": "Bags", "Toys": "Toys", "Clothes": "Clothes" }
+                cat: { "Gifts": "Gifts", "Accessories": "Accessories", "Bags": "Bags", "Clothes": "Clothes" }
             },
             ar: {
                 subtitle: "هدايا - إكسسوارات - حقائب - ألعاب - ملابس",
@@ -270,7 +270,7 @@
                 coupon: "كود الخصم (جرب FLEEK10)", apply: "تطبيق",
                 subtotal: "المجموع الفرعي", deliveryFee: "رسوم التوصيل", discount: "الخصم", total: "الإجمالي",
                 checkoutWa: "إتمام الطلب عبر واتساب",
-                cat: { "Gifts": "هدايا", "Accessories": "إكسسوارات", "Bags": "حقائب", "Toys": "ألعاب", "Clothes": "ملابس" }
+                cat: { "Gifts": "هدايا", "Accessories": "إكسسوارات", "Bags": "حقائب", "Clothes": "ملابس" }
             }
         };
         let currentLang = 'ar'; // عربي كافتراضي
@@ -298,7 +298,6 @@
         <div class="info-bar">
             <div class="info-card"><i class="fas fa-map-marker-alt text-primary"></i> <span id="t-location">الموقع: منيارة - عكار</span></div>
             <div class="info-card"><i class="fas fa-truck text-primary"></i> <span id="t-delivery">توصيل لكافة أنحاء لبنان</span></div>
-            <!-- الرقم الظاهر في الموقع هو رقم المتجر، لكن رسالة الواتس تذهب لرقمك التركي -->
             <div class="info-card"><i class="fab fa-whatsapp text-primary"></i> <span>+961 70 353 760</span></div>
         </div>
     </section>
@@ -451,7 +450,7 @@
             <h3>FLEEK Boutique</h3>
             <p id="t-footer-desc">هدايا - إكسسوارات - حقائب - ألعاب - ملابس</p>
             <div class="social-links">
-                <!-- الواتس في التذييل أيضاً مربوط برقمك التركي -->
+                <!-- الواتس في التذييل مربوط برقمك التركي -->
                 <a href="https://wa.me/905376262192" target="_blank" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a>
                 <a href="https://instagram.com/fleekboutique_lb" target="_blank" style="color: #E1306C;"><i class="fab fa-instagram"></i></a>
             </div>
@@ -472,10 +471,8 @@
 
     <!-- كود الجافاسكريبت (المنتجات والمنطق) -->
     <script>
-        // الأقسام متطابقة تماماً مع البايو (Gifts - Accessories - Bags - Toys - Clothes)
-        const categories = ["Gifts", "Accessories", "Bags", "Toys", "Clothes"];
+        const categories = ["Gifts", "Accessories", "Bags", "Clothes"];
         
-        // الإضافات (Add-ons)
         const giftAddons = [
             {name: "Premium Gift Wrapping / تغليف هدايا فاخر", price: 3.00}, 
             {name: "Add Greeting Card / بطاقة إهداء", price: 1.50}
@@ -484,76 +481,70 @@
             {name: "Add Cute Charms / إضافة تعليقات كيوت", price: 2.00}
         ];
 
-        // المنتجات وتوزيعها الدقيق على أقسام المتجر الأساسية
+        // مصفوفة المنتجات مع الأوصاف الدقيقة كما تم طلبها
         const rawItems = [
-            // Clothes (ملابس)
-            { id: 1, cat: "Clothes", name: "Kids Character Swimwear", price: 18.00, desc: "طقم سباحة للأطفال بأشكال شخصيات محببة (سبايدرمان، شارك، ستيتش). مريح وذو جودة عالية.", addons: [], tags: ['bestseller', 'summer'], 
-              variants: [{name: "Spiderman", price: 18.00}, {name: "Stitch", price: 18.00}, {name: "Shark", price: 18.00}] },
-            { id: 15, cat: "Clothes", name: "Kids Football Team Kits", price: 18.00, desc: "أطقم رياضية للأطفال (تيشيرت وشورت) لفرق عالمية.", addons: [], tags: [], 
-              variants: [{name: "Argentina", price: 18.00}, {name: "Brazil", price: 18.00}, {name: "Germany", price: 18.00}] },
+            // Clothes
+            { id: 1, cat: "Clothes", name: "Kids 3-Piece Swimwear", price: 18.00, desc: "Shop our cutest 3-piece swimwear", addons: [], tags: ['bestseller', 'summer'], variants: [{name: "Spiderman", price: 18.00}, {name: "Stitch", price: 18.00}, {name: "Shark", price: 18.00}] },
+            { id: 15, cat: "Clothes", name: "Kids Football Kits", price: 18.00, desc: "Full World Cup outfit? We’ve got you covered!", addons: [], tags: [], variants: [{name: "Argentina", price: 18.00}, {name: "Brazil", price: 18.00}, {name: "Germany", price: 18.00}] },
 
-            // Accessories (إكسسوارات)
-            { id: 2, cat: "Accessories", name: "Kids Hooded Beach Towel", price: 15.00, desc: "منشفة بحر بغطاء للرأس بتصاميم ممتعة للأطفال (إلسا، باربي، بامبي).", addons: [], tags: ['summer', 'new'], 
-              variants: [{name: "Elsa", price: 15.00}, {name: "Barbie", price: 15.00}, {name: "Bambi", price: 15.00}, {name: "Astronaut", price: 15.00}] },
-            { id: 3, cat: "Accessories", name: "Turkish Peshtemal Towel", price: 12.00, desc: "مناشف تركية أصلية للبحر، خفيفة الوزن وسريعة الجفاف بألوان متعددة.", addons: [], tags: ['summer', 'bestseller'] },
-            { id: 14, cat: "Accessories", name: "Floral & Cherry Hair Claws", price: 5.00, desc: "ملاقط شعر أنيقة بتصاميم ورود أو كرز.", addons: [], tags: ['gifts', 'bestseller'] },
-            { id: 16, cat: "Accessories", name: "Trendy Sunglasses", price: 10.00, desc: "نظارات شمسية عصرية تحمي من أشعة الشمس.", addons: [], tags: ['summer'] },
-            { id: 17, cat: "Accessories", name: "Summer Straw Visor Hat", price: 8.00, desc: "طاقية شمس خوص (Visor) مريحة وأنيقة للصيف.", addons: [], tags: ['summer'] },
-            { id: 18, cat: "Accessories", name: "Custom Name Beaded Bracelet", price: 3.00, desc: "أساور خرز مخصصة بأسماء أو عبارات، ممتازة لتوزيعات أعياد الميلاد.", addons: [], tags: ['gifts', 'offer'] },
+            // Accessories
+            { id: 2, cat: "Accessories", name: "Kids Poncho Beach Towel", price: 15.00, desc: "Tiny poncho, big adventures!", addons: [], tags: ['summer', 'new'] },
+            { id: 3, cat: "Accessories", name: "Turkish Beach Towel", price: 12.00, desc: "Beach days are better with a Turkish towel.", addons: [], tags: ['summer', 'bestseller'] },
+            { id: 14, cat: "Accessories", name: "Floral & Cherry Hair Clips", price: 5.00, desc: "Hair Clips", addons: [], tags: ['gifts', 'bestseller'] },
+            { id: 16, cat: "Accessories", name: "Trendy Sunglasses", price: 10.00, desc: "New sunglasses Order now", addons: [], tags: ['summer'] },
+            { id: 17, cat: "Accessories", name: "Straw Visor Hat", price: 8.00, desc: "Your beach outfit is incomplete without these", addons: [], tags: ['summer'] },
+            { id: 18, cat: "Accessories", name: "Beaded Bracelets", price: 3.00, desc: "Colorful beaded bracelets to match your summer energy. Stack them up or wear them solo for a cute, trendy look!", addons: [], tags: ['gifts', 'offer'] },
+            { id: 20, cat: "Accessories", name: "Portable Electronic Fan", price: 8.00, desc: "Summer essential you can’t live without... Portable • Rechargeable.", addons: [], tags: ['summer'] },
+            { id: 21, cat: "Accessories", name: "Stainless Steel Hoops", price: 12.00, desc: "New hoops stainless steel", addons: [], tags: ['new'] },
 
-            // Gifts (هدايا)
-            { id: 4, cat: "Gifts", name: "Cosmo Kids Sunscreen SPF50", price: 10.00, desc: "واقي شمس بخاخ للأطفال حماية عالية 50 SPF، آمن على البشرة.", addons: [], tags: ['summer'] },
-            { id: 5, cat: "Gifts", name: "Fruit Hand Fan", price: 4.00, desc: "مروحة يدوية صيفية قابلة للطي بتصاميم فواكه منعشة (بطيخ، فراولة).", addons: [], tags: ['summer', 'offer'] },
-            { id: 6, cat: "Gifts", name: "Bamboo Lid Floral Tumbler", price: 14.00, desc: "كوب زجاجي بغطاء من البامبو وشفاط، مزين بطبعات ورود زاهية.", addons: giftAddons, tags: ['gifts', 'new'] },
-            { id: 7, cat: "Gifts", name: "Stanley Style Tumbler", price: 20.00, desc: "مطرة حافظة للحرارة والبرودة ستايل ستانلي مع مقبض، ألوان باستيل مميزة.", addons: giftAddons, tags: ['bestseller'] },
-            { id: 8, cat: "Gifts", name: "Cute Cherry Ceramic Mug", price: 12.00, desc: "كوب سيراميك بتصميم كرز مميز ومبتكر، مثالي كهدية.", addons: giftAddons, tags: ['gifts'] },
-            { id: 19, cat: "Gifts", name: "Custom Gift Basket", price: 40.00, desc: "سلة هدايا مخصصة (تحتوي على كوب ومفاجآت أخرى) مغلفة بشكل فاخر.", addons: giftAddons, tags: ['gifts', 'bestseller'] },
+            // Gifts
+            { id: 4, cat: "Gifts", name: "COSMO SPF50 Sunscreen Spray", price: 10.00, desc: "Your summer essential is here! Stay protected under the sun with COSMO SPF 50+ Sunscreen Spray Broad Spectrum UVA & UVB Protection Vitamin C + Niacinamide Water & Sweat Resistant Lightweight, easy-to-apply spray Perfect for beach days, pool days, and everyday adventures!", addons: [], tags: ['summer'] },
+            { id: 5, cat: "Gifts", name: "Fruit Hand Fan", price: 4.00, desc: "Pocket-sized summer vibes! Lightweight, colorful, and perfect for hot days on the go.", addons: [], tags: ['summer', 'offer'] },
+            { id: 6, cat: "Gifts", name: "Stitch Glass Cup with Straw", price: 14.00, desc: "Stich cup with straw! Perfect for kids", addons: giftAddons, tags: ['gifts', 'new'] },
+            { id: 7, cat: "Gifts", name: "Thermal Tumbler", price: 20.00, desc: "Your new favorite tumbler is here!", addons: giftAddons, tags: ['bestseller'] },
+            { id: 8, cat: "Gifts", name: "Cherry Ceramic Mug", price: 12.00, desc: "أضف لمسة من الحلاوة لقهوتك الصباحية مع كوب السيراميك اللطيف بتصميم الكرز. هدية مثالية لنفسك أو لمن تحب! \nAdd a pop of sweetness to your morning coffee with this adorable cherry-themed ceramic mug. A perfect gift for yourself or a loved one!", addons: giftAddons, tags: ['gifts'] },
+            { id: 19, cat: "Gifts", name: "Custom Gift Box", price: 40.00, desc: "Your perfect gift box awaits", addons: giftAddons, tags: ['gifts', 'bestseller'] },
 
-            // Bags (حقائب وشنط)
-            { id: 9, cat: "Bags", name: "Kids Hard-Shell Backpack", price: 16.00, desc: "حقيبة ظهر قاسية للأطفال تحافظ على شكلها بأشكال (آيس كريم، يونيكورن).", addons: [], tags: ['new'] },
-            { id: 10, cat: "Bags", name: "Rubber Bogg Beach Bag", price: 28.00, desc: "حقيبة مطاطية واسعة ومقاومة للماء، يمكن تزيينها بالتعليقات (Charms).", addons: bagAddons, tags: ['summer', 'bestseller'] },
-            { id: 11, cat: "Bags", name: "Rattan Round Crossbody Bag", price: 22.00, desc: "حقيبة قش/خوص دائرية أنيقة جداً لمشاوير الصيف.", addons: [], tags: ['summer'] },
-            { id: 12, cat: "Bags", name: "Duffle Gym/Travel Bag", price: 25.00, desc: "حقيبة دافل عملية ومبطنة للسفر القصير أو الجيم.", addons: [], tags: [] },
-            { id: 13, cat: "Bags", name: "Premium Laptop Backpack", price: 30.00, desc: "حقيبة ظهر عملية متوفرة باللون الأسود والرمادي، تناسب اللابتوب والمدارس.", addons: [], tags: ['offer'] },
-
-            // Toys (ألعاب - تمت إضافتها لتغطية القسم)
-            { id: 20, cat: "Toys", name: "Giant Teddy Bear", price: 35.00, desc: "دبدوب قطيفة ناعم وحجم كبير، هدية مميزة لمختلف الأعمار.", addons: giftAddons, tags: ['gifts'] },
-            { id: 21, cat: "Toys", name: "Educational Wooden Puzzle", price: 15.00, desc: "بازل خشبي تعليمي للأطفال بألوان مبهجة وتصاميم آمنة.", addons: giftAddons, tags: ['new'] }
+            // Bags
+            { id: 9, cat: "Bags", name: "Kids Hard-Shell Bag", price: 16.00, desc: "Cute little bags, big smiles! Perfect for your little princess ✨ Available in adorable colors and ready for every adventure", addons: [], tags: ['new'] },
+            { id: 10, cat: "Bags", name: "Oversized Beach Bag", price: 28.00, desc: "Oversized bag for oversized summer plans Visit us and discover a collection made for every taste Because the little details make all the difference", addons: bagAddons, tags: ['summer', 'bestseller'] },
+            { id: 11, cat: "Bags", name: "Round Rattan Bag", price: 22.00, desc: "Beach chic, made easy.", addons: [], tags: ['summer'] },
+            { id: 12, cat: "Bags", name: "Men's Duffle Bag", price: 25.00, desc: "For the man who likes it simple, stylish & practical", addons: [], tags: [] },
+            { id: 13, cat: "Bags", name: "Men's Laptop Backpack", price: 30.00, desc: "For the man who likes it simple, stylish & practical", addons: [], tags: ['offer'] }
         ];
 
-        // صور احترافية من منصة Unsplash عالية الدقة ومطابقة لتغذية منتجاتك البصرية
+        // قراءة الصور من ملفاتك المحلية المرفوعة (من 1 إلى 21)
         const imgMap = {
-            1: "https://images.unsplash.com/photo-1519500099198-fe703a118833?auto=format&fit=crop&w=600&q=80", 
-            2: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=600&q=80", 
-            3: "https://images.unsplash.com/photo-1563804825-961f681da0d1?auto=format&fit=crop&w=600&q=80", 
-            4: "https://images.unsplash.com/photo-1557313837-299f2b1d7d07?auto=format&fit=crop&w=600&q=80", 
-            5: "https://images.unsplash.com/photo-1627845341235-9f5eef14f9d4?auto=format&fit=crop&w=600&q=80", 
-            6: "https://images.unsplash.com/photo-1579737952377-f2df0f031265?auto=format&fit=crop&w=600&q=80", 
-            7: "https://images.unsplash.com/photo-1622384234057-36e78864703a?auto=format&fit=crop&w=600&q=80", 
-            8: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=600&q=80", 
-            9: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80", 
-            10: "https://images.unsplash.com/photo-1584916201218-f4242ceb4809?auto=format&fit=crop&w=600&q=80", 
-            11: "https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=600&q=80", 
-            12: "https://images.unsplash.com/photo-1553062407-98eeb64c6a63?auto=format&fit=crop&w=600&q=80", 
-            13: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600&q=80", 
-            14: "https://images.unsplash.com/photo-1588612502693-018693ebad6e?auto=format&fit=crop&w=600&q=80", 
-            15: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=600&q=80", 
-            16: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&q=80", 
-            17: "https://images.unsplash.com/photo-1584445584428-971c26f04c05?auto=format&fit=crop&w=600&q=80", 
-            18: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=600&q=80", 
-            19: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80", 
-            20: "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80", 
-            21: "https://images.unsplash.com/photo-1618842676088-c4d48a6a7c12?auto=format&fit=crop&w=600&q=80"  
+            1: "1.jpg",
+            2: "2.jpg",
+            3: "3.jpg",
+            4: "4.jpg",
+            5: "5.jpg",
+            6: "6.jpg",
+            7: "7.jpg",
+            8: "8.jpg",
+            9: "9.jpg",
+            10: "10.jpg",
+            11: "11.jpg",
+            12: "12.jpg",
+            13: "13.jpg",
+            14: "14.jpg",
+            15: "15.jpg",
+            16: "16.jpg",
+            17: "17.jpg",
+            18: "18.jpg",
+            19: "19.jpg",
+            20: "20.jpg",
+            21: "21.jpg"
         };
 
         const menuData = rawItems.map(item => ({
             ...item,
             img: imgMap[item.id],
-            rate: (Math.random() * 0.5 + 4.5).toFixed(1), // تقييمات ممتازة
+            rate: (Math.random() * 0.5 + 4.5).toFixed(1),
             rateCnt: Math.floor(Math.random() * 200) + 15
         }));
 
-        // الحالة المحلية
         let cart = JSON.parse(localStorage.getItem('fleek_cart')) || [];
         let favs = JSON.parse(localStorage.getItem('fleek_favs')) || [];
         let reviews = JSON.parse(localStorage.getItem('fleek_reviews')) || {};
@@ -721,7 +712,6 @@
             });
         }
 
-        // ================= Modal & Reviews Logic =================
         function openItem(id) {
             currentItem = menuData.find(i => i.id === id);
             cQty = 1; cAddons = []; document.getElementById('m-note').value = "";
@@ -804,7 +794,6 @@
             localStorage.setItem('fleek_favs', JSON.stringify(favs));
         }
 
-        // ================= Review System =================
         let selStar = 5;
         document.querySelectorAll('.star-select i').forEach(star => {
             star.onclick = function() {
@@ -845,7 +834,6 @@
             }
         }
 
-        // ================= Cart & Checkout =================
         function showToast() {
             const toast = document.getElementById("toast");
             toast.innerText = i18n[currentLang].toastMsg;
